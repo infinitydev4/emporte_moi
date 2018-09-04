@@ -7,4 +7,5 @@ class User < ApplicationRecord
                         :numericality => {:message => 'doit être un nombre'},
                         :length => { :minimum => 10, :maximum => 10 }
   has_many :plats
+  has_one :panier
 end
