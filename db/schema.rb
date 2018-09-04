@@ -10,22 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_04_111406) do
+ActiveRecord::Schema.define(version: 2018_09_04_150903) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "plats", force: :cascade do |t|
+  create_table "paniers", force: :cascade do |t|
+    t.integer "quantité"
     t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_paniers_on_user_id", unique: true
+  end
+
+  create_table "paniers_plats", force: :cascade do |t|
+    t.bigint "panier_id"
+    t.bigint "plat_id"
+    t.index ["panier_id"], name: "index_paniers_plats_on_panier_id"
+    t.index ["plat_id"], name: "index_paniers_plats_on_plat_id"
+  end
+
+  create_table "plats", force: :cascade do |t|
     t.string "titre"
     t.text "description"
     t.integer "prix"
-    t.integer "quantité"
+    t.integer "quantité", default: 1
     t.string "plage_horaire"
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_plats_on_user_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -60,5 +73,7 @@ ActiveRecord::Schema.define(version: 2018_09_04_111406) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "plats", "users"
+  add_foreign_key "paniers", "users"
+  add_foreign_key "paniers_plats", "paniers"
+  add_foreign_key "paniers_plats", "plats"
 end
