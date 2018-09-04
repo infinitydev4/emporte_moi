@@ -15,19 +15,19 @@ ActiveRecord::Schema.define(version: 2018_09_04_150903) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "panier_plats", force: :cascade do |t|
-    t.bigint "panier_id"
-    t.bigint "plat_id"
-    t.index ["panier_id"], name: "index_panier_plats_on_panier_id"
-    t.index ["plat_id"], name: "index_panier_plats_on_plat_id"
-  end
-
   create_table "paniers", force: :cascade do |t|
     t.integer "quantité"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_paniers_on_user_id", unique: true
+  end
+
+  create_table "paniers_plats", force: :cascade do |t|
+    t.bigint "panier_id"
+    t.bigint "plat_id"
+    t.index ["panier_id"], name: "index_paniers_plats_on_panier_id"
+    t.index ["plat_id"], name: "index_paniers_plats_on_plat_id"
   end
 
   create_table "plats", force: :cascade do |t|
@@ -75,8 +75,8 @@ ActiveRecord::Schema.define(version: 2018_09_04_150903) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "panier_plats", "paniers"
-  add_foreign_key "panier_plats", "plats"
   add_foreign_key "paniers", "users"
+  add_foreign_key "paniers_plats", "paniers"
+  add_foreign_key "paniers_plats", "plats"
   add_foreign_key "plats", "users"
 end
