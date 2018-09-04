@@ -6,4 +6,5 @@ class User < ApplicationRecord
   validates :téléphone, :presence => {:message => 'champ obligatoire'},
                         :numericality => {:message => 'doit être un nombre'},
                         :length => { :minimum => 10, :maximum => 10 }
+  has_many :plats
 end
