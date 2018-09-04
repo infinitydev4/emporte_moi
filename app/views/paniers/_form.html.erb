@@ -1,0 +1,22 @@
+<%= form_with(model: panier, local: true) do |form| %>
+  <% if panier.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(panier.errors.count, "error") %> prohibited this panier from being saved:</h2>
+
+      <ul>
+      <% panier.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :quantité %>
+    <%= form.text_field :quantité %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
