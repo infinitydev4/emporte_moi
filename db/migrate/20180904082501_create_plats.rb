@@ -5,7 +5,7 @@ class CreatePlats < ActiveRecord::Migration[5.2]
       t.string :titre
       t.text :description
       t.integer :prix
-      t.integer :quantité
+      t.integer :quantité, :default => 1
       t.string :plage_horaire
       t.string :image_url
 
