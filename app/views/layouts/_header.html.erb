@@ -1,4 +1,4 @@
-<nav class="navbar bg-dark">
+<nav class="navbar navbar-light navbar-expand-lg bg-dark bg-faded osahan-menu">
    <div class="container-fluid">
       <a class="navbar-brand" href=<%= root_url %>> <%= image_tag 'img/logo.png' %> </a>
          <div class="my-2 my-lg-0">
@@ -11,11 +11,13 @@
                   <%= link_to('Se déconnecter', destroy_user_session_path, method: :delete, class: 'btn btn-danger', style: {"border-right": "1px solid red"}) %>
                 </li>
                 <li class="list-inline-item cart-btn">
-                   <a href="#" data-toggle="offcanvas" class="btn btn-link border-none"><i class="mdi mdi-cart"></i> Mon panier <small class="cart-value">
+                  <%=link_to "#", class: "btn btn-link border-none", data: { toggle: "offcanvas" } do %>
+                     <i class="mdi mdi-cart"></i> Mon panier <small class="cart-value">
                      <% if current_user.panier %>
                        <%= current_user.panier.plats.count %>
                      <% end %>
                    </small></a>
+                   <% end %>
                 </li>
               <% elsif current_restaurant %>
                 <li class="list-inline-item text-white">
@@ -31,9 +33,11 @@
                   <% end %>
                 </li>
                 <li class="list-inline-item cart-btn">
-                   <a href="#" data-toggle="offcanvas" class="btn btn-link border-none"><i class="mdi mdi-cart"></i> Mon panier <small class="cart-value">
+                  <%=link_to "#", class: "btn btn-link border-none", data: {toggle: "offcanvas"} do %>
+                     <i class="mdi mdi-cart"></i> Mon panier <small class="cart-value">
                      0
                    </small></a>
+                  <% end %>
                 </li>
               <% end %>
 
