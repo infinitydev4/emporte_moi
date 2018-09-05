@@ -19,3 +19,15 @@
 @import "owl-carousel/owl.theme.css";
 @import "icons/css/materialdesignicons";
 @import "select2/css/select2-bootstrap";
+
+.list-inline-item a{
+  color: white !important;
+}
+.list-inline-item a{
+  border-right: none !important;
+}
+
+.col-lg-6 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+}
