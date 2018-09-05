@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_05_092043) do
+ActiveRecord::Schema.define(version: 2018_09_05_141924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 2018_09_05_092043) do
   end
 
   create_table "paniers", force: :cascade do |t|
-    t.integer "quantité"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -37,21 +36,20 @@ ActiveRecord::Schema.define(version: 2018_09_05_092043) do
     t.bigint "plat_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "quantité"
     t.index ["panier_id"], name: "index_paniers_plats_on_panier_id"
     t.index ["plat_id"], name: "index_paniers_plats_on_plat_id"
   end
 
   create_table "plats", force: :cascade do |t|
-    t.bigint "user_id"
     t.string "titre"
     t.text "description"
     t.integer "prix"
-    t.integer "quantité"
+    t.integer "stock", default: 1
     t.string "plage_horaire"
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_plats_on_user_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -91,5 +89,4 @@ ActiveRecord::Schema.define(version: 2018_09_05_092043) do
   add_foreign_key "paniers", "users"
   add_foreign_key "paniers_plats", "paniers"
   add_foreign_key "paniers_plats", "plats"
-  add_foreign_key "plats", "users"
 end
