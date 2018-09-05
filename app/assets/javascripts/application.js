@@ -10,6 +10,10 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //= require jquery3
+//= require bootstrap/js/bootstrap.bundle
+//= require datatables/datatables
+//= require owl-carousel/owl.carousel
+//= require select2/js/select2
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
