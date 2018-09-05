@@ -42,16 +42,14 @@ ActiveRecord::Schema.define(version: 2018_09_05_092043) do
   end
 
   create_table "plats", force: :cascade do |t|
-    t.bigint "user_id"
     t.string "titre"
     t.text "description"
     t.integer "prix"
-    t.integer "quantité"
+    t.integer "quantité", default: 1
     t.string "plage_horaire"
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_plats_on_user_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -91,5 +89,4 @@ ActiveRecord::Schema.define(version: 2018_09_05_092043) do
   add_foreign_key "paniers", "users"
   add_foreign_key "paniers_plats", "paniers"
   add_foreign_key "paniers_plats", "plats"
-  add_foreign_key "plats", "users"
 end
