@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap/css/bootstrap.min";
+@import "datatables/datatables";
+@import "owl-carousel/owl.carousel.css";
+@import "owl-carousel/owl.theme.css";
+@import "icons/css/materialdesignicons";
+@import "select2/css/select2-bootstrap";
