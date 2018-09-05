@@ -8,4 +8,5 @@ class User < ApplicationRecord
                         :length => { :minimum => 10, :maximum => 10 }
   has_many :plats
   has_one :panier
+  has_many :orders
 end
