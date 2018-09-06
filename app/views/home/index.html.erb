@@ -10,10 +10,11 @@
         <% Plat.all.each do |plat| %>
            <div class="item">
               <div class="product">
-                 <a href="single.html">
+                 <%= link_to plats_path(id: plat.id) do %>
                     <div class="product-header">
                        <%= image_tag plat.image_url %>
                     </div>
+                    <%end%>
                     <div class="product-body">
                        <h5><%= plat.titre %></h5>
                        <h6><strong> Disponibilité : </strong> <%= plat.plage_horaire %></h6>
