@@ -25,8 +25,14 @@
    <div class="cart-sidebar-footer">
       <div class="cart-store-details">
          
-         <h6>Total <strong class="float-right">44 €</strong></h6>
+         <h6>Total <strong class="float-right">
+           <% if current_user && current_user.panier %>
+             <%= current_user.panier.plats.map{|plat| plat.prix}.sum %> €
+           <% else %>
+             0 €
+           <% end %>
+         </strong></h6>
       </div>
-      <a href="checkout.html"><button class="btn btn-secondary btn-lg btn-block text-center" type="button"><span class=""><i class="mdi mdi-cart-outline"></i> Passer la commande </span></button></a>
+      <a href=<%= order_path %>><button class="btn btn-secondary btn-lg btn-block text-center" type="button"><span class=""><i class="mdi mdi-cart-outline"></i> Passer la commande </span></button></a>
    </div>
 </div>
