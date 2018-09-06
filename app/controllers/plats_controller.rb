@@ -1,6 +1,6 @@
-class PaniersController < ApplicationController
+class PlatsController < ApplicationController
     def show
-     
+     @plat=Plat.find(params[:id])
     end
     def new
         @plat = Plat.new
