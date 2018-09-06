@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2018_09_05_141924) do
     t.string "titre"
     t.text "description"
     t.integer "prix"
-    t.integer "stock"
+    t.integer "stock", default: 1
     t.string "plage_horaire"
     t.string "image_url"
     t.datetime "created_at", null: false
