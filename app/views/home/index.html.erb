@@ -19,8 +19,19 @@
                        <h6><strong> Disponibilité : </strong> <%= plat.plage_horaire %></h6>
                     </div>
                     <div class="product-footer">
-                       <button type="button" class="btn btn-secondary btn-sm float-right"><i class="mdi mdi-cart-outline"></i> Ajouter au panier</button>
-                       <p class="offer-price"><%= plat.prix %>€</p>
+                      <% if current_user %>
+                        <%= link_to paniers_path(id: plat.id), action: "ajout_panier",method: :post, class: "btn btn-secondary btn-sm float-right" do %>
+                          <% if !Panier.find_by(user_id: current_user.id) %>
+                            <% Panier.create(user_id: current_user.id) %>
+                          <% end %>
+                          <i class="mdi mdi-cart-outline"></i> Ajouter au panier
+                        <% end %>
+                      <% else %>
+                        <%= link_to new_user_session_path, class: "btn btn-secondary btn-sm float-right" do %>
+                          <i class="mdi mdi-cart-outline"></i> Ajouter au panier
+                        <% end %>
+                      <% end %>
+                      <p class="offer-price"><%= plat.prix %>€</p>
                     </div>
                  </a>
               </div>

@@ -64,11 +64,11 @@ class PaniersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_panier
-      @panier = Panier.find(params[:id])
+      
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def panier_params
-      params.require(:panier).permit(:quantité)
+
     end
 end
