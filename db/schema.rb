@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2018_09_05_141924) do
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_plats_on_user_id", unique: true
+    t.index ["user_id"], name: "index_plats_on_user_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
