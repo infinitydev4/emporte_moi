@@ -10,8 +10,22 @@ class PaniersController < ApplicationController
   # GET /paniers/1
   # GET /paniers/1.json
   def show
+    if Panier.find_by(user_id: current_user.id)
+      @panier = Panier.find_by(user_id: current_user.id)
+    else
+      @panier = Panier.create(user_id: current_user.id)
+    end
+  end
+  def empty
+    @Panier = Panier.find_by(user_id: current_user.id)
+    @Panier.items.destroy_all
+    redirect_to panier_path
   end
 
+  def remove_item
+    PaniersItem.destroy(PaniersItem.find_by(item_id: params[:item_id]).id)
+    redirect_to Panier_path
+  end
   # GET /paniers/new
   def new
     @panier = Panier.new

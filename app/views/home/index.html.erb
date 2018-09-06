@@ -10,7 +10,7 @@
         <% Plat.all.each do |plat| %>
            <div class="item">
               <div class="product">
-                 <a href="single.html">
+               <%=  link_to plat_path(id: plat.id) do %>
                     <div class="product-header">
                        <%= image_tag plat.image_url %>
                     </div>
@@ -22,7 +22,7 @@
                        <button type="button" class="btn btn-secondary btn-sm float-right"><i class="mdi mdi-cart-outline"></i> Ajouter au panier</button>
                        <p class="offer-price"><%= plat.prix %>€</p>
                     </div>
-                 </a>
+                <% end %>
               </div>
            </div>
          <% end %>
