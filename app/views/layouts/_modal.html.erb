@@ -1,0 +1,182 @@
+<div class="modal fade login-modal-main" id="bd-example-modal">
+   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-content">
+         <div class="modal-body">
+            <div class="login-modal">
+               <div class="row">
+                  <div class="col-lg-6 text-center">
+                     <button type="button" class="close close-top-right" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true"><i class="mdi mdi-close"></i></span>
+                     <span class="sr-only"></span>
+                     </button>
+                        <div class="login-modal">
+                           <!-- Tab panes -->
+                           <div class="tab-content">
+                              <div class="tab-pane active" id="login">
+                                 <h5 class="heading-design-h5">Connectez-vous (particuliers)</h5>
+                                 <%= form_for(:user, :url => session_path(:user)) do |f| %>
+                                   <div class="form-group">
+                                     <%= f.label :email %><br />
+                                     <%= f.email_field :email, autofocus: true, placeholder: "email", class: "form-control" %>
+                                   </div>
+
+                                   <div class="form-group">
+                                     <%= f.label :password %><br />
+                                     <%= f.password_field :password, placeholder: "******", class: "form-control" %>
+                                   </div>
+
+                                   <% if devise_mapping.rememberable? -%>
+                                     <div class="form-group">
+                                       <%= f.check_box :remember_me %>
+                                       <%= f.label :remember_me %>
+                                     </div>
+                                   <% end -%>
+
+                                   <div class="actions">
+                                     <%= f.submit "Se connecter", class: "btn btn-lg btn-secondary" %>
+                                   </div>
+                                 <% end %>
+                              </div>
+                              <div class="tab-pane" id="login-resto" role="tabpanel">
+                                 <h5 class="heading-design-h5">Connectez-vous (restaurants)</h5>
+                                 <%= form_for("restaurant", url: session_path("restaurant"), html: {id: "sign"}) do |f| %>
+                                   <div class="form-group">
+                                     <%= f.label :email %><br />
+                                     <%= f.email_field :email, autofocus: true, placeholder: "email", class: "form-control", id: "email" %>
+                                   </div>
+
+                                   <div class="form-group">
+                                     <%= f.label :password %><br />
+                                     <%= f.password_field :password, placeholder: "******", class: "form-control", id: "passw" %>
+                                   </div>
+
+                                   <% if devise_mapping.rememberable? -%>
+                                     <div class="form-group">
+                                       <%= f.check_box :remember_me , id: "rem"%>
+                                       <%= f.label :remember_me %>
+                                     </div>
+                                   <% end -%>
+
+                                   <div class="actions">
+                                     <%= f.submit "Se connecter", class: "btn btn-lg btn-secondary" %>
+                                   </div>
+                                 <% end %>
+                              </div>
+                              <div class="tab-pane" id="register" role="tabpanel">
+                                 <h5 class="heading-design-h5">S'inscrire en tant que particulier</h5>
+                                 <%= form_for(:user, url: registration_path(:user), html: {id: "new"}) do |f| %>
+                                   <%= devise_error_messages! %>
+
+                                   <div class="form-group">
+                                     <%= f.label :prénom %><br />
+                                     <%= f.text_field :prénom, autofocus: true, placeholder: "prénom", class: "form-control" %>
+                                   </div>
+
+                                   <div class="form-group">
+                                     <%= f.label :nom %><br />
+                                     <%= f.text_field :nom, placeholder: "nom", class: "form-control" %>
+                                   </div>
+
+                                   <div class="form-group">
+                                     <%= f.label :ville %><br />
+                                     <%= f.text_field :ville, placeholder: "ville", class: "form-control" %>
+                                   </div>
+
+                                   <div class="form-group">
+                                     <%= f.label :téléphone %><br />
+                                     <%= f.text_field :téléphone, placeholder: "téléphone", class: "form-control" %>
+                                   </div>
+
+                                   <div class="form-group">
+                                     <%= f.label :email %><br />
+                                     <%= f.email_field :email, placeholder: "email", class: "form-control", id: "mail" %>
+                                   </div>
+
+                                   <div class="form-group">
+                                     <%= f.label :Mot_de_passe %>
+                                     <% if @minimum_password_length %>
+                                     <em>(<%= @minimum_password_length %> characters minimum)</em>
+                                     <% end %><br />
+                                     <%= f.password_field :password, placeholder: "********", class: "form-control", id:"pass" %>
+                                   </div>
+
+                                   <div class="form-group">
+                                     <%= f.label :password_confirmation %><br />
+                                     <%= f.password_field :password_confirmation, placeholder: "********", class: "form-control" %>
+                                   </div>
+
+                                   <div class="actions">
+                                     <%= f.submit "Inscription", class:"btn btn-lg btn-secondary btn-block"%>
+                                   </div>
+                                 <% end %>
+                              </div>
+                              <div class="tab-pane" id="register-resto" role="tabpanel">
+                                 <h5 class="heading-design-h5">S'inscrire en tant que restaurant</h5>
+                                 <%= form_for("restaurant", url: registration_path("restaurant")) do |f| %>
+                                   <%= devise_error_messages! %>
+
+                                   <div class="form-group">
+                                     <%= f.label :nom %><br />
+                                     <%= f.text_field :nom, autofocus: true, placeholder: "nom", class: "form-control" %>
+                                   </div>
+
+                                   <div class="form-group">
+                                     <%= f.label :adresse %><br />
+                                     <%= f.text_field :adresse, placeholder: "adresse", class: "form-control" %>
+                                   </div>
+
+                                   <div class="form-group">
+                                     <%= f.label :téléphone %><br />
+                                     <%= f.text_field :téléphone, placeholder: "téléphone", class: "form-control" %>
+                                   </div>
+
+                                   <div class="form-group">
+                                     <%= f.label :email %><br />
+                                     <%= f.email_field :email, placeholder: "email", class: "form-control" %>
+                                   </div>
+
+                                   <div class="form-group">
+                                     <%= f.label :password %>
+                                     <% if @minimum_password_length %>
+                                     <em>(<%= @minimum_password_length %> characters minimum)</em>
+                                     <% end %><br />
+                                     <%= f.password_field :password, placeholder: "******", class: "form-control" %>
+                                   </div>
+
+                                   <div class="form-group">
+                                     <%= f.label :password_confirmation %><br />
+                                     <%= f.password_field :password_confirmation, placeholder: "******", class: "form-control" %>
+                                   </div>
+
+                                   <div class="actions">
+                                     <%= f.submit "Inscription", class:"btn btn-lg btn-secondary btn-block" %>
+                                   </div>
+                                 <% end %>
+                              </div>
+                           </div>
+                           <div class="clearfix"></div>
+                           <div class="text-center login-footer-tab">
+                              <ul class="nav nav-tabs d-flex justify-content-center" role="tablist">
+                                 <li class="nav-item">
+                                    <a class="btn btn-primary active" data-toggle="tab" href="#login" role="tab"><i class="mdi mdi-lock"></i> Connexion PARTICULIER</a>
+                                 </li>
+                                 <li class="nav-item">
+                                    <a class="btn btn-primary" data-toggle="tab" href="#login-resto" role="tab"><i class="mdi mdi-lock"></i> Connexion RESTAURANT</a>
+                                 </li>
+                                 <li class="nav-item">
+                                    <a class="btn btn-success" data-toggle="tab" href="#register" role="tab"><i class="mdi mdi-pencil"></i> Inscription PARTICULIER</a>
+                                 </li>
+                                 <li class="nav-item">
+                                    <a class="btn btn-success" data-toggle="tab" href="#register-resto" role="tab"><i class="mdi mdi-pencil"></i> Inscription RESTAURANT</a>
+                                 </li>
+                              </ul>
+                           </div>
+                           <div class="clearfix"></div>
+                        </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

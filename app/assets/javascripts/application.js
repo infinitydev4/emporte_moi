@@ -13,7 +13,8 @@
 //= require bootstrap/js/bootstrap.bundle
 //= require datatables/datatables
 //= require owl-carousel/owl.carousel
-//= require select2/js/select2
+//= require select2/js/select2.full
+//= require groci/js/custom.min
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks

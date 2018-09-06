@@ -1,0 +1,9 @@
+<section class="carousel-slider-main text-center border-top border-bottom bg-white">
+   <div class="owl-carousel owl-carousel-slider">
+     <% Plat.all.each do |plat| %>
+      <div class="item">
+         <a href=""> <%= image_tag plat.image_url, style: "width:300px; height:200px;" %></a>
+      </div>
+      <% end %>
+   </div>
+</section>

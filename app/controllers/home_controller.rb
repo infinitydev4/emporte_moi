@@ -1,7 +1,5 @@
 class HomeController < ApplicationController
   def index
-    if current_user
-      redirect_to posts_path
+    @user = User.new
   end
-end
 end

@@ -13,9 +13,41 @@
  *= require_tree .
  *= require_self
  */
-@import "bootstrap/css/bootstrap.min";
-@import "datatables/datatables";
+@import "bootstrap/css/bootstrap.min.css";
+@import "datatables/datatables.css";
 @import "owl-carousel/owl.carousel.css";
 @import "owl-carousel/owl.theme.css";
-@import "icons/css/materialdesignicons";
-@import "select2/css/select2-bootstrap";
+@import "icons/css/materialdesignicons.css";
+@import "select2/css/select2-bootstrap.css";
+
+.list-inline-item a{
+  color: white !important;
+  border: none !important;
+}
+
+.list-inline-item {
+  margin-right: 15px !important;
+}
+
+.col-lg-6 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+}
+
+.modal-dialog {
+  max-width: 600px;
+}
+
+.form-group {
+  width: 60%;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.main-nav-right {
+  margin-bottom: 0;
+}
+
+.btn {
+  margin: 10px;
+}
