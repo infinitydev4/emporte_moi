@@ -7,9 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Plat.destroy_all
 
+u = User.create(prénom: "Crash", nom: "Test", ville: "Nantes", téléphone: "0606060606", email: "test@example.com", password: "foobar", password_confirmation: "foobar")
+
 4.times do |i|
 
-  Plat.create(user_id: 1, titre: "plat#{i}", description: "voilà mon plat", prix: 9, stock: 1, plage_horaire: "8h-20h", image_url: "plat#{i}")
+  Plat.create(user_id: u.id, titre: "plat#{i}", description: "voilà mon plat", prix: 9, stock: 1, plage_horaire: "8h-20h", image_url: "plat#{i}")
   i += 1;
 
 end
