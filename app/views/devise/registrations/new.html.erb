@@ -1,49 +1,51 @@
-<h2>Sign up</h2>
+<center>
+  <h5 class="heading-design-h5">S'inscrire en tant que particulier</h5>
+  <%= form_for(:user, url: registration_path(:user), html: {id: "new"}) do |f| %>
+    <%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+    <div class="form-group">
+      <%= f.label :prénom %><br />
+      <%= f.text_field :prénom, autofocus: true, placeholder: "prénom", class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :prénom %><br />
-    <%= f.text_field :prénom, autofocus: true, autocomplete: "prénom" %>
-  </div>
+    <div class="form-group">
+      <%= f.label :nom %><br />
+      <%= f.text_field :nom, placeholder: "nom", class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :nom %><br />
-    <%= f.text_field :nom, autocomplete: "nom" %>
-  </div>
+    <div class="form-group">
+      <%= f.label :ville %><br />
+      <%= f.text_field :ville, placeholder: "ville", class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :ville %><br />
-    <%= f.text_field :ville, autocomplete: "ville" %>
-  </div>
+    <div class="form-group">
+      <%= f.label :téléphone %><br />
+      <%= f.text_field :téléphone, placeholder: "téléphone", class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :téléphone %><br />
-    <%= f.text_field :téléphone, autocomplete: "téléphone" %>
-  </div>
+    <div class="form-group">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, placeholder: "email", class: "form-control", id: "mail" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
+    <div class="form-group">
+      <%= f.label :Mot_de_passe %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, placeholder: "********", class: "form-control", id:"pass" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <div class="form-group">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, placeholder: "********", class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="actions">
+      <%= f.submit "Inscription", class:"btn btn-lg btn-secondary"%>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+    <%= link_to "Me connecter", new_user_session_path, class: "btn btn-primary" %>
+    <%= link_to "Je suis un restaurant", new_restaurant_registration_path, class: "btn btn-primary" %>
+  <% end %>
+</center>
