@@ -7,10 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 PaniersPlat.destroy_all
 Plat.destroy_all
-example = User.find_by(email: "test@example.com").id
-Order.destroy(Order.find_by(user_id: example).id)
-Panier.destroy(Panier.find_by(user_id: example).id)
-User.destroy(example)
+if User.find_by(email: "test@example.com")
+  example = User.find_by(email: "test@example.com").id
+  Order.destroy(Order.find_by(user_id: example).id)
+  Panier.destroy(Panier.find_by(user_id: example).id)
+  User.destroy(example)
+end
 u = User.create(prénom: "Crash", nom: "Test", ville: "Nantes", téléphone: "0606060606", email: "test@example.com", password: "foobar", password_confirmation: "foobar")
 pan = Panier.create(user_id: u.id)
 4.times do |i|
