@@ -2,6 +2,9 @@ class PlatsController < ApplicationController
     def show
      @plat=Plat.find(params[:id])
      
+    
+    def index
+      @plat=Plat.all
     end
     def new
         @plat = Plat.new
@@ -10,19 +13,23 @@ class PlatsController < ApplicationController
     def edit
     end
     def create
-        @panier = Plat.new(plat_params)
-    
+      if current_user 
+        @plat = Plat.new(plat_params)
+        @plat.user_id=current_user.id
         respond_to do |format|
-          if @panier.save
-            format.html { redirect_to @panier, notice: 'Panier was successfully created.' }
-            format.json { render :show, status: :created, location: @panier }
+          if @plat.save
+            format.html { redirect_to @plat, notice: 'Panier was successfully created.' }
+            format.json { render :show, status: :created, location: @plat}
           else
             format.html { render :new }
-            format.json { render json: @panier.errors, status: :unprocessable_entity }
+            format.json { render json: @plat.errors, status: :unprocessable_entity }
           end
         end
+      end
     end
-
+    def show
+      @plat=Plat.find(params[:id])
+     end
 def update
     respond_to do |format|
       if @plat.update(plat_params)
@@ -44,6 +51,8 @@ def update
       format.json { head :no_content }
     end
   end
-
+  def plat_params
+    params.require(:plat).permit(:titre, :description, :prix, :stock, :plage_horaire, :image_url, :photo_plat,:current_user)
+  end
 
 end

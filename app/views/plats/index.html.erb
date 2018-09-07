@@ -1,22 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Paniers</h1>
+<h1>Plats</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Quantité</th>
+      <th></th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @paniers.each do |panier| %>
+    <% @plat.each do |plat| %>
       <tr>
-        <td><%= panier.quantité %></td>
-        <td><%= link_to 'Show', panier %></td>
-        <td><%= link_to 'Edit', edit_panier_path(panier) %></td>
-        <td><%= link_to 'Destroy', panier, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= plat.titre%></td>
+        <td><%= plat.prix%></td>
+        <td><%= plat.description%></td>
+        <td><%= link_to 'Show', plat_path(plat.id) %></td>
+        <td><%= link_to 'Edit', plat_path(plat.id) %></td>
+        <td></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Panier', new_panier_path %>
+<%= link_to 'New Plat', new_plat_path %>

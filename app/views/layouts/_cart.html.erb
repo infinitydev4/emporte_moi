@@ -33,6 +33,14 @@
            <% end %>
          </strong></h6>
       </div>
-      <a href=<%= order_path %>><button class="btn btn-secondary btn-lg btn-block text-center" type="button"><span class=""><i class="mdi mdi-cart-outline"></i> Passer la commande </span></button></a>
+      <% if current_user && current_user.panier %>
+        <%= link_to paniers_path do %>
+          <button class="btn btn-secondary btn-lg btn-block text-center" type="button">Voir mon panier</button>
+        <% end %>
+      <% else %>
+        <%= link_to new_user_session_path do %>
+          <button class="btn btn-secondary btn-lg btn-block text-center" type="button">Voir mon panier</button>
+        <% end %>
+      <% end %>
    </div>
 </div>

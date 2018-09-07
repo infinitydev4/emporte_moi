@@ -1,0 +1,2 @@
+class OrdersPlat < ApplicationRecord
+end
