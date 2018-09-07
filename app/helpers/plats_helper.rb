@@ -1,0 +1,2 @@
+module PlatsHelper
+end
