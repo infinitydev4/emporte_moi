@@ -19,6 +19,7 @@
 @import "owl-carousel/owl.theme.css";
 @import "icons/css/materialdesignicons.css";
 @import "select2/css/select2-bootstrap.css";
+@import url('https://fonts.googleapis.com/css?family=Oswald');
 
 .list-inline-item a{
   color: white !important;

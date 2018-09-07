@@ -12,37 +12,22 @@
        </div>
        <div class="col-md-6">
           <div class="shop-detail-right">
-             <span class="badge badge-success">50% OFF</span>
-             <h2>SaveMore Corn Flakes (Pouch)</h2>
-             <h6><strong><span class="mdi mdi-approval"></span> Available in</strong> - 500 gm</h6>
-             <p class="regular-price"><i class="mdi mdi-tag-outline"></i> MRP : $800.99</p>
-             <p class="offer-price mb-0">Discounted price : <span class="text-success">$450.99</span></p>
-             <a href="checkout.html"><button type="button" class="btn btn-secondary btn-lg"><i class="mdi mdi-cart-outline"></i> Add To Cart</button> </a>
+          
+            <!--reduction-->
+             <!--<span class="badge badge-success">50% </span>-->
+             <h2><%= @plat.titre %></h2>
+             <!--poids-->
+             <!--<h6><strong><span class="mdi mdi-approval"></span> Available in</strong> - 500 gm</h6>-->
+             <p class="offer-price mb-0">Prix: <span class="text-success"><%= @plat.prix%>€</span></p>
+             <a href="checkout.html"><button type="button" class="btn btn-secondary btn-lg"><i class="mdi mdi-cart-outline"></i>Emporte moi</button> </a>
              <div class="short-description">
                 <h5>
-                   Quick Overview  
-                   <p class="float-right">Availability: <span class="badge badge-success">In Stock</span></p>
+                   Description  
+                   <p class="float-right">Disponibilité: <span class="badge badge-success"><%= @plat.stock%></span></p>
                 </h5>
                 <p><b>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b> Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum.
                 </p>
                 <p class="mb-0"> Vivamus adipiscing nisl ut dolor dignissim semper. Nulla luctus malesuada tincidunt. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hiMenaeos. Integer enim purus, posuere at ultricies eu, placerat a felis. Suspendisse aliquet urna pretium eros convallis interdum.</p>
-             </div>
-             <h6 class="mb-3 mt-4">Why shop from Groci?</h6>
-             <div class="row">
-                <div class="col-md-6">
-                   <div class="feature-box">
-                      <i class="mdi mdi-truck-fast"></i>
-                      <h6 class="text-info">Free Delivery</h6>
-                      <p>Lorem ipsum dolor...</p>
-                   </div>
-                </div>
-                <div class="col-md-6">
-                   <div class="feature-box">
-                      <i class="mdi mdi-basket"></i>
-                      <h6 class="text-info">100% Guarantee</h6>
-                      <p>Rorem Ipsum Dolor sit...</p>
-                   </div>
-                </div>
              </div>
           </div>
        </div>
