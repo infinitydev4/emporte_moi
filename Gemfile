@@ -66,3 +66,4 @@ gem 'jquery-rails'
 gem 'rails_admin', '~> 1.3'
 gem 'rails_admin_rollincode', '~> 1.0'
 gem 'dotenv-rails'
+gem "aws-sdk-s3", require: false
