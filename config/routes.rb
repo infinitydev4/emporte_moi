@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   get '/commande', to: "order#show", as: "order"
   get '/paniers', to: 'paniers#show', as: "paniers"
   post '/paniers', to: 'home#ajout_panier'
+  get '/contact', to: 'home#contact'
+  get '/cgu', to: 'home#cgu'
 end
