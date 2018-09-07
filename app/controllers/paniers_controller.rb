@@ -18,13 +18,15 @@ class PaniersController < ApplicationController
   end
   def empty
     @Panier = Panier.find_by(user_id: current_user.id)
-    @Panier.items.destroy_all
-    redirect_to panier_path
+    @Panier.plats.each do |plat|
+      PaniersPlat.destroy(PaniersPlat.find_by(panier_id: @Panier.id, plat_id: plat.id).id)
+    end
+    redirect_to paniers_path
   end
 
   def remove_item
-    PaniersItem.destroy(PaniersItem.find_by(item_id: params[:item_id]).id)
-    redirect_to Panier_path
+    PaniersPlat.destroy(PaniersPlat.find_by(plat_id: params[:plat_id]).id)
+    redirect_to paniers_path
   end
   # GET /paniers/new
   def new
@@ -78,7 +80,7 @@ class PaniersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_panier
-      
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
