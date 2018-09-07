@@ -10,7 +10,7 @@
         <% Plat.all.each do |plat| %>
            <div class="item">
               <div class="product">
-                 <%= link_to plats_path(id: plat.id) do %>
+                 <%= link_to plat_path(id: plat.id) do %>
                     <div class="product-header">
                        <%= image_tag plat.image_url %>
                     </div>

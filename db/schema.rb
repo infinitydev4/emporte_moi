@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_06_111848) do
+ActiveRecord::Schema.define(version: 2018_09_07_133034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,15 @@ ActiveRecord::Schema.define(version: 2018_09_06_111848) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "orders_plats", force: :cascade do |t|
+    t.bigint "order_id"
+    t.bigint "plat_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_orders_plats_on_order_id"
+    t.index ["plat_id"], name: "index_orders_plats_on_plat_id"
+  end
+
   create_table "paniers", force: :cascade do |t|
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -67,7 +76,7 @@ ActiveRecord::Schema.define(version: 2018_09_06_111848) do
     t.string "titre"
     t.text "description"
     t.integer "prix"
-    t.integer "stock", default: 1
+    t.integer "stock"
     t.string "plage_horaire"
     t.string "image_url"
     t.datetime "created_at", null: false
@@ -109,6 +118,8 @@ ActiveRecord::Schema.define(version: 2018_09_06_111848) do
 
   add_foreign_key "orders", "paniers"
   add_foreign_key "orders", "users"
+  add_foreign_key "orders_plats", "orders"
+  add_foreign_key "orders_plats", "plats"
   add_foreign_key "paniers", "users"
   add_foreign_key "paniers_plats", "paniers"
   add_foreign_key "paniers_plats", "plats"
