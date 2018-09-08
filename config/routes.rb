@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   post '/', to: 'paniers#empty'
   get '/contact', to: 'home#contact'
   get '/cgu', to: 'home#cgu'
+  get '/profil', to: 'home#profil', as: 'profil'
 end
