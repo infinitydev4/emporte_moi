@@ -4,13 +4,13 @@
 
 .h1
 {
-    display: flex; 
+    display: flex;
     justify-content: center;
 }
 .div2
 {
-    display: flex; 
-    justify-content: center; 
+    display: flex;
+    justify-content: center;
 }
 
 .div3
@@ -20,9 +20,13 @@
 
 .div1-contact
 {
-    display: flex; 
+    display: flex;
     justify-content: center;
     // margin: 10px 50px 20px 30px;
    position: absolute;
    bottom: 0;
+}
+
+.form-group {
+  width: 100% !important;
 }
