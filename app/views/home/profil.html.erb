@@ -30,13 +30,13 @@
                           <%= devise_error_messages! %>
                            <div class="row">
                               <div class="col-sm-6">
-                                 <div class="form-group">
+                                 <div class="form-group profil">
                                    <%= f.label :prénom, class: "control-label" %><br />
                                    <%= f.text_field :prénom, autofocus: true, autocomplete: "prénom" ,class: "form-control border-form-control" %>
                                  </div>
                               </div>
                               <div class="col-sm-6">
-                                 <div class="form-group">
+                                 <div class="form-group profil">
                                    <%= f.label :nom, class: "control-label" %><br />
                                    <%= f.text_field :nom, autocomplete: "nom", class: "form-control border-form-control" %>
                                  </div>
@@ -44,13 +44,13 @@
                            </div>
                            <div class="row">
                               <div class="col-sm-6">
-                                 <div class="form-group">
+                                 <div class="form-group profil">
                                   <%= f.label :téléphone, class: "control-label" %><br />
                                   <%= f.text_field :téléphone, autocomplete: "téléphone", class: "form-control border-form-control" %>
                                  </div>
                               </div>
                               <div class="col-sm-6">
-                                 <div class="form-group">
+                                 <div class="form-group profil">
                                    <%= f.label :email, class: "control-label" %><br />
                                    <%= f.email_field :email, autocomplete: "email", class: "form-control border-form-control" %>
                                   </div>
@@ -59,13 +59,13 @@
                            </div>
                            <div class="row">
                               <div class="col-sm-6">
-                                 <div class="form-group">
+                                 <div class="form-group profil">
                                    <%= f.label "nouveau mot de passe", class: "control-label" %><br />
                                    <%= f.password_field :password, autocomplete: "nouveau mot de passe", class: "form-control border-form-control" %>
                                   </div>
                               </div>
                               <div class="col-sm-6">
-                                 <div class="form-group">
+                                 <div class="form-group profil">
                                    <%= f.label "confirmer le mot de passe", class: "control-label" %><br />
                                    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control border-form-control" %>
                                  </div>
@@ -74,7 +74,7 @@
                            <center><small><em>^ Laisser blanc si inchangé ^</em></small></center>
                            <div class="row">
                               <div class="col-sm-12">
-                                 <div class="form-group">
+                                 <div class="form-group profil">
                                    <%= f.label "mot de passe actuel", class: "control-label" %><br />
                                    <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control border-form-control" %>
                                  </div>
