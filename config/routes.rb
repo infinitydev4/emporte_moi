@@ -13,4 +13,7 @@ Rails.application.routes.draw do
   get '/contact', to: 'home#contact'
   get '/cgu', to: 'home#cgu'
   get '/profil', to: 'home#profil', as: 'profil'
+  get '/mon_restaurant', to: 'home#mon_restaurant', as: 'mon_restaurant'
+  get '/mes_plats', to: 'home#mes_plats', as: 'mes_plats'
+  get '/mes_commandes', to: 'home#mes_commandes', as: 'mes_commandes'
 end

@@ -17,4 +17,16 @@ class HomeController < ApplicationController
   def profil
     @user = current_user
   end
+
+  def mes_commandes
+    @user = current_user
+  end
+
+  def mon_restaurant
+    @resto = current_restaurant
+  end
+
+  def mes_plats
+    @resto = current_restaurant
+  end
 end
