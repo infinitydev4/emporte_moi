@@ -13,4 +13,8 @@ class HomeController < ApplicationController
 
   def cgu
   end
+
+  def profil
+    @user = current_user
+  end
 end
