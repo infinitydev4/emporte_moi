@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
 
 PaniersPlat.destroy_all
 Plat.destroy_all
@@ -23,15 +24,19 @@ u = User.create(
   password: "foobar",
   password_confirmation: "foobar"
 )
+u.image_profile.attach(
+  io: File.open("app/assets/images/avatar.jpg"),
+  filename: "avatar.jpg"
+)
 pan = Panier.create(user_id: u.id)
-4.times do |i|
+7.times do |i|
 
   plat = Plat.create(user_id: u.id,
-    titre: "plat#{i}",
-    description: "voilà mon plat",
+    titre: Faker::Food.dish,
+    description: Faker::Food.description,
     prix: 9,
     stock: 1,
-    plage_horaire: "8h-20h",
+    plage_horaire: "8h-20h"
   )
   plat.photo_plat.attach(
     io: File.open("app/assets/images/plat#{i}.jpeg"),

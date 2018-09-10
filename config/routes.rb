@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   devise_for :restaurants
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root to: 'home#index'
-  devise_for :users
+
   get '/commande', to: "order#new", as: "order"
+  devise_for :users, :controllers => {:registrations => "users/registrations"}
+ 
   get '/paniers', to: 'paniers#show', as: "paniers"
   post '/paniers', to: 'home#ajout_panier'
   get '/remove', to: 'paniers#remove_item', as: 'remove_item'
