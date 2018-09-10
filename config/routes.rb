@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :plats
   devise_for :restaurants
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root to: 'home#index'
