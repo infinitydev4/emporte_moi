@@ -29,6 +29,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
         'HTMLPart'=> "<h1>Salut #{current_user.prénom.capitalize}</h1>. <h2>Merci de ton inscription sur le site ! Tu peux à présent commander autant de plats que tu veux !</h2>"
       }]}
       test = Mailjet::Send.create(email)
+
+      current_user.image_profile.attach(
+        io: File.open("app/assets/images/avatar.jpg"),
+        filename: "avatar.jpg"
+      )
     end
   end
 
