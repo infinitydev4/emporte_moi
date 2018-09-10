@@ -24,6 +24,10 @@ u = User.create(
   password: "foobar",
   password_confirmation: "foobar"
 )
+u.image_profile.attach(
+  io: File.open("app/assets/images/avatar.jpg"),
+  filename: "avatar.jpg"
+)
 pan = Panier.create(user_id: u.id)
 7.times do |i|
 
