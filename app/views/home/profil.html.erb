@@ -6,14 +6,17 @@
                <div class="col-md-4">
                   <div class="card account-left">
                      <div class="user-profile-header">
-                        <h5 class="mb-1 text-secondary"> <%= @user.prénom %> <%= @user.nom %></h5>
+                        <h5 class="mb-1 text-secondary"> <%= @user.prénom.capitalize %> <%= @user.nom.capitalize %></h5>
                         <p> <%= show_num(@user.téléphone) %></p>
                      </div>
                      <div class="list-group">
                         <a href=<%= profil_path %> class="list-group-item list-group-item-action active"><i aria-hidden="true" class="mdi mdi-account-outline"></i>  Mon Profil</a>
                         <a href=<%= mes_commandes_path %> class="list-group-item list-group-item-action"><i aria-hidden="true" class="mdi mdi-format-list-bulleted"></i>  Mes commandes</a>
                         <%= link_to(destroy_user_session_path, class: "list-group-item list-group-item-action", method: :delete) do %>
-                          <i aria-hidden="true" class="mdi mdi-format-list-bulleted"></i>  Se déconnecter
+                          <i aria-hidden="true" class="mdi mdi-account-off"></i>  Se déconnecter
+                        <% end %>
+                        <%= link_to registration_path(:user), data: { confirm: "Are you sure?" }, method: :delete, class: "list-group-item list-group-item-action bg-danger text-white" do %>
+                          <i aria-hidden="true" class="mdi mdi-alert-circle"></i>  Détruire mon compte
                         <% end %>
                       </div>
                   </div>
@@ -82,7 +85,6 @@
                            </div>
                            <div class="row">
                               <div class="col-sm-12 text-right actions">
-                                 <%= button_to "Détruire mon compte", registration_path(:user), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %>
                                  <%= f.submit "Mettre à jour", class: "btn btn-success" %>
                               </div>
                            </div>

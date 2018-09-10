@@ -10,9 +10,27 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    if current_user
+      email = { messages: [{
+        'From'=> {
+            'Email'=> ENV['PRIVATE_EMAIL_ADRESS'],
+            'Name'=> 'Emporte-moi'
+        },
+        'To'=> [
+            {
+                'Email'=> current_user.email,
+                'Name'=> current_user.prénom
+            }
+        ],
+        'Subject'=> 'Bienvenue sur Emporte-moi !',
+        'TextPart'=> "Salut #{current_user.prénom.capitalize}. Merci de ton inscription sur le site ! Tu peux à présent commander autant de plats que tu veux !",
+        'HTMLPart'=> "<h1>Salut #{current_user.prénom.capitalize}</h1>. <h2>Merci de ton inscription sur le site ! Tu peux à présent commander autant de plats que tu veux !</h2>"
+      }]}
+      test = Mailjet::Send.create(email)
+    end
+  end
 
   # GET /resource/edit
   # def edit

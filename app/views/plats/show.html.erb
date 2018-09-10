@@ -1,35 +1,43 @@
-
-
-
 <div class="container">
     <div class="row">
-       <div class="col-md-6">
-          <div class="shop-detail-left">
-             <div class="shop-detail-slider">
-            <%= image_tag @plat.photo_plat %>
-             </div>
-          </div>
-       </div>
-       <div class="col-md-6">
-          <div class="shop-detail-right">
-          
-            <!--reduction-->
-             <!--<span class="badge badge-success">50% </span>-->
-             <h2><%= @plat.titre %></h2>
-             <!--poids-->
-             <!--<h6><strong><span class="mdi mdi-approval"></span> Available in</strong> - 500 gm</h6>-->
-             <p class="offer-price mb-0">Prix: <span class="text-success"><%= @plat.prix%>€</span></p>
-             <a href="checkout.html"><button type="button" class="btn btn-secondary btn-lg"><i class="mdi mdi-cart-outline"></i>Emporte moi</button> </a>
-             <div class="short-description">
-                <h5>
-                   Description  
-                   <p class="float-right">Disponibilité: <span class="badge badge-success"><%= @plat.stock%></span></p>
-                </h5>
-                <p><b>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b> Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum.
-                </p>
-                <p class="mb-0"> Vivamus adipiscing nisl ut dolor dignissim semper. Nulla luctus malesuada tincidunt. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hiMenaeos. Integer enim purus, posuere at ultricies eu, placerat a felis. Suspendisse aliquet urna pretium eros convallis interdum.</p>
-             </div>
-          </div>
-       </div>
-    </div>
- </div>
+     <div class="col-md-6">
+        <div class="shop-detail-left">
+           <div class="shop-detail-slider">
+          <%= image_tag @plat.photo_plat %>
+           </div>
+        </div>
+     </div>
+     <div class="col-md-6">
+        <div class="shop-detail-right">
+           <span style="font-size:2.5em;"><%= @plat.titre.capitalize %></span>
+           <span class="offer-price mb-0 float-right">Prix: <span class="text-success"><%= @plat.prix %>€</span></span><br>
+           <% if current_user %>
+             <%= link_to paniers_path(id: @plat.id), action: "ajout_panier",method: :post do %>
+               <% if !Panier.find_by(user_id: current_user.id) %>
+                 <% Panier.create(user_id: current_user.id) %>
+               <% end %>
+               <button type="button" class="btn btn-secondary btn-lg"><i class="mdi mdi-cart-outline"></i> Emporte moi</button>
+             <% end %>
+           <% else %>
+             <%= link_to new_user_session_path do %>
+             <button type="button" class="btn btn-secondary btn-lg"><i class="mdi mdi-cart-outline"></i> Emporte moi</button>
+             <% end %>
+           <% end %>
+           <div class="short-description">
+              <h5>
+                 Description
+                 <p class="float-right">Disponibilité: <span class="badge badge-success">
+                  <% if @plat.stock > 0 %>
+                   En stock ( <%= @plat.stock %> )
+                  <% else %>
+                   Rupture de stock
+                  <% end %>
+                 </span></p>
+              </h5>
+              <p><%= @plat.description %></p>
+              </p>
+           </div>
+        </div>
+     </div>
+  </div>
+</div>

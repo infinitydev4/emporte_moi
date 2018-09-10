@@ -3,10 +3,12 @@ module HomeHelper
   def show_num(num)
     i = 0
     nums = num.split("")
-    numspace = nums.map do
-      nums[i] + nums[i+1]
+    numspace = ""
+    5.times do
+      numspace << nums[i] + nums[i+1] + " "
+      i += 2
     end
-    return numspace[0..4].join(' ')
+    return numspace[0..13]
   end
 
 end
