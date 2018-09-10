@@ -7,13 +7,21 @@
                   <div class="card account-left">
                      <div class="user-profile-header">
                         <h5 class="mb-1 text-secondary"> <%= @user.prénom %> <%= @user.nom %></h5>
+                       <% if @user.image_profile.nil? %>
+                        <%= image_tag @user.image_profile %>
+                     <% else %>
+                         <%= image_tag 'avatar' %>
+                       <% end %>
                         <p> <%= show_num(@user.téléphone) %></p>
                      </div>
                      <div class="list-group">
                         <a href=<%= profil_path %> class="list-group-item list-group-item-action active"><i aria-hidden="true" class="mdi mdi-account-outline"></i>  Mon Profil</a>
                         <a href=<%= mes_commandes_path %> class="list-group-item list-group-item-action"><i aria-hidden="true" class="mdi mdi-format-list-bulleted"></i>  Mes commandes</a>
                         <%= link_to(destroy_user_session_path, class: "list-group-item list-group-item-action", method: :delete) do %>
-                          <i aria-hidden="true" class="mdi mdi-format-list-bulleted"></i>  Se déconnecter
+                          <i aria-hidden="true" class="mdi mdi-account-off"></i>  Se déconnecter
+                        <% end %>
+                        <%= link_to registration_path(:user), data: { confirm: "Are you sure?" }, method: :delete, class: "list-group-item list-group-item-action bg-danger text-white" do %>
+                          <i aria-hidden="true" class="mdi mdi-alert-circle"></i>  Détruire mon compte
                         <% end %>
                       </div>
                   </div>
@@ -30,6 +38,10 @@
                           <%= devise_error_messages! %>
                            <div class="row">
                               <div class="col-sm-6">
+                                  <div class="form-group profil">
+                                     <%= f.label :image_profile, class: "control-label" %><br />
+                                    <%= f.file_field :image_profile, autofocus: true,class: "form-control border-form-control" %>
+                               </div>
                                  <div class="form-group profil">
                                    <%= f.label :prénom, class: "control-label" %><br />
                                    <%= f.text_field :prénom, autofocus: true, autocomplete: "prénom" ,class: "form-control border-form-control" %>
@@ -81,8 +93,7 @@
                               </div>
                            </div>
                            <div class="row">
-                              <div class="col-sm-12 text-right">
-                                 <%= button_to "Détruire mon compte", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %>
+                              <div class="col-sm-12 text-right actions">
                                  <%= f.submit "Mettre à jour", class: "btn btn-success" %>
                               </div>
                            </div>
