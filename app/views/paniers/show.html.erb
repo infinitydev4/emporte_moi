@@ -24,7 +24,7 @@
                        <% @panier.plats.each do |plat| %>
                         <tr>
                            <td class="cart_product"><%= link_to plat_path(id: plat.id) do %>
-                             <%= image_tag plat.image_url %>
+                             <%= image_tag plat.photo_plat %>
                              <% end %>
                            </td>
                            <td class="cart_description">

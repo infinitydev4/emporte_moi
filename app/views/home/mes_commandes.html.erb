@@ -1,0 +1,32 @@
+<section class="account-page section-padding">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-9 mx-auto">
+            <div class="row no-gutters">
+               <div class="col-md-4">
+                  <div class="card account-left">
+                     <div class="user-profile-header">
+                        <h5 class="mb-1 text-secondary"> <%= @user.prénom %> <%= @user.nom %></h5>
+                        <p> <%= show_num(@user.téléphone) %></p>
+                     </div>
+                     <div class="list-group">
+                        <a href=<%= profil_path %> class="list-group-item list-group-item-action"><i aria-hidden="true" class="mdi mdi-account-outline"></i>  Mon Profil</a>
+                        <a href=<%= mes_commandes_path %> class="list-group-item list-group-item-action active"><i aria-hidden="true" class="mdi mdi-format-list-bulleted"></i>  Mes commandes</a>
+                        <%= link_to(destroy_user_session_path, class: "list-group-item list-group-item-action", method: :delete) do %>
+                          <i aria-hidden="true" class="mdi mdi-format-list-bulleted"></i>  Se déconnecter
+                        <% end %>
+                      </div>
+                  </div>
+               </div>
+               <div class="col-md-8">
+                  <div class="card card-body account-right">
+                     <div class="widget">
+                       A venir
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>

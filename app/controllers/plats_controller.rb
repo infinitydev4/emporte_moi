@@ -16,6 +16,7 @@ class PlatsController < ApplicationController
       if current_user 
         @plat = Plat.new(plat_params)
         @plat.user_id=current_user.id
+        
         respond_to do |format|
           if @plat.save
             format.html { redirect_to @plat, notice: 'Panier was successfully created.' }
