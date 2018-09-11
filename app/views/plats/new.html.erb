@@ -1,42 +1,44 @@
-<%= form_with(model: @plat, local: true) do |form| %>
-  <% if @plat.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@plat.errors.count, "error") %> prohibited this panier from being saved:</h2>
+<center>
+  <%= form_for(:plat, html: {method: :post, action: "create"}) do |form| %>
+    <% if @plat.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@plat.errors.count, "error") %> prohibited this panier from being saved:</h2>
 
-      <ul>
-      <% @plat.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @plat.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :titre, class: "control-label" %><br />
+      <%= form.text_field :titre, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :description, class: "control-label" %><br />
+      <%= form.text_field :description, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :prix, class: "control-label" %><br />
+      <%= form.text_field :prix, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :stock, class: "control-label" %><br />
+      <%= form.text_field :stock, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :plage_horaire, class: "control-label"%><br />
+      <%= form.text_field :plage_horaire, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :photo_plat, class: "control-label" %><br />
+      <%= form.file_field :photo_plat, class: "form-control" %>
+    </div>
+    <div class="actions">
+      <%= form.submit "créer plat", class:"btn btn-lg btn-secondary" %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :titre %>
-    <%= form.text_field :titre %>
-  </div>
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
-  <div class="field">
-    <%= form.label :prix %>
-    <%= form.text_field :prix %>
-  </div>
-  <div class="field">
-    <%= form.label :stock %>
-    <%= form.text_field :stock %>
-  </div>
-  <div class="field">
-    <%= form.label :plage_horaire%>
-    <%= form.text_field :plage_horaire %>
-  </div>
-
-  <div class="field">
-    <%= form.label :photo_plat %>
-    <%= form.file_field :photo_plat %>
-  </div>
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</center>

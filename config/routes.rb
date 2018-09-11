@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get '/commande', to: "order#new", as: "order"
   devise_for :users, :controllers => {:registrations => "users/registrations"}
- 
+
   get '/paniers', to: 'paniers#show', as: "paniers"
   post '/paniers', to: 'home#ajout_panier'
 
@@ -26,4 +26,5 @@ Rails.application.routes.draw do
   get '/mon_restaurant', to: 'home#mon_restaurant', as: 'mon_restaurant'
   get '/mes_plats', to: 'home#mes_plats', as: 'mes_plats'
   get '/mes_commandes', to: 'home#mes_commandes', as: 'mes_commandes'
+  post '/plats/new', to: 'plats#create'
 end
