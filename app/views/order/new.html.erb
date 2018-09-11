@@ -9,40 +9,23 @@
                       <h5 class="mb-0">Paiement</h5>
                    </div>
                     <div class="card-body">
-                       <form class="col-lg-8 col-md-8 mx-auto">
-                          <div class="form-group">
-                             <label class="control-label">Card Number</label>
-                             <input class="form-control border-form-control" value="" placeholder="0000 0000 0000 0000" type="text">
-                          </div>
-                          <div class="row">
-                             <div class="col-sm-3">
-                                <div class="form-group">
-                                   <label class="control-label">Month</label>
-                                   <input class="form-control border-form-control" value="" placeholder="01" type="text">
-                                </div>
-                             </div>
-                             <div class="col-sm-3">
-                                <div class="form-group">
-                                   <label class="control-label">Year</label>
-                                   <input class="form-control border-form-control" value="" placeholder="15" type="text">
-                                </div>
-                             </div>
-                             <div class="col-sm-3">
-                             </div>
-                             <div class="col-sm-3">
-                                <div class="form-group">
-                                   <label class="control-label">CVV</label>
-                                   <input class="form-control border-form-control" value="" placeholder="135" type="text">
-                                </div>
-                             </div>
-                          </div>
-                          <hr>
-                          <div class="custom-control custom-radio">
-                             <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-                             <label class="custom-control-label" for="customRadio1">Would you like to pay by Cash on Delivery?</label>
-                          </div>
-                          <%= link_to "Payer", "#", class: "btn btn-secondary" %>
-                       </form>
+                      <%= form_tag order_path do %>
+                          <article>
+                            <% if flash[:error].present? %>
+                            <div id="error_explanation">
+                              <p><%= flash[:error] %></p>
+                            </div>
+                            <% end %>
+                            <label class="amount">
+                            <span>Amount: $</span>
+                            </label>
+                          </article>
+                          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                            data-description="A month's subscription"
+                            data-amount="999"
+                            data-locale="auto"></script>
+                      <% end %>
                     </div>
                 </div>
              </div>

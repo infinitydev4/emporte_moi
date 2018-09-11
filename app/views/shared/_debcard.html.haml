@@ -1,0 +1,10 @@
+%fieldset.credit_card
+  .payment-errors
+    %label.control-label.col-sm-2(for="credit-card-number") Credit Card Number
+    %input.form-control#credit-card-number(type="text" data-stripe="number")
+    %label.control-label.col-sm-2(for="security-code") Security Code
+    %input.form-control#security-code(type="text" data-stripe="cvc")
+    %label.control-label.col-sm-2 Expiration
+    = select_month(Date.today, {add_month_numbers: true},  class: 'form-control', data: {stripe: "exp-month"})
+    = select_year(Date.today.year, {start_year: Date.today.year, end_year: Date.today.year + 4}, class: 'form-control', data: {stripe: "exp-year"})
+    %input(type="submit" value="Sign Up"

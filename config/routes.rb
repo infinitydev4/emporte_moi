@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   get '/commande', to: "order#new", as: "order"
+  post '/commande', to: "order#create"
   devise_for :users, :controllers => {:registrations => "users/registrations"}
 
   get '/paniers', to: 'paniers#show', as: "paniers"

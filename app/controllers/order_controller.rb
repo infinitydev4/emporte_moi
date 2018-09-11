@@ -12,7 +12,7 @@ class OrderController < ApplicationController
   end
  
   def create
-   
+    @panier = Panier.find_by(user_id: current_user.id)
     @customer = Stripe::Customer.create(
         email:params[:stripeEmail],
         source:params[:stripeToken],
@@ -27,8 +27,11 @@ class OrderController < ApplicationController
     )
 
     
-@order.plats.destroy_all
 
+redirect_to root_path
+
+    rescue Stripe::CardError => e
+  flash[:alert]=e.message
 
   end
   
