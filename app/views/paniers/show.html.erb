@@ -34,15 +34,26 @@
                            <td class="price"><span><%= plat.prix %> €</span></td>
                            <td class="qty">
                               <div class="input-group">
-                                 <span class="input-group-btn"><button disabled="disabled" class="btn btn-theme-round btn-number" type="button">-</button></span>
-                                 <input type="text" max="10" min="1" value=<%= PaniersPlat.find_by(panier_id: current_user.panier, plat_id: plat.id).quantité %> class="form-control border-form-control form-control-sm input-number" name="quant[1]">
-                                 <span class="input-group-btn"><button class="btn btn-theme-round btn-number" type="button">+</button>
-                                 </span>
+                                 <%= link_to remove_item_path(plat_id: plat.id), method: :post, action: "remove_item" do %>
+                                   <span class="input-group-btn"><button
+                                     <% if @panier.paniers_plats.find_by(plat_id: plat.id).quantité == 1 %>
+                                       disabled="disabled"
+                                     <% end %>
+                                     class="btn btn-theme-round btn-number" type="button">-</button></span>
+                                 <% end %>
+                                 <input type="text" max="10" min="1" value=<%= @panier.paniers_plats.find_by(plat_id: plat.id).quantité %> class="form-control border-form-control form-control-sm input-number" name="quant[1]">
+                                 <%= link_to add_item_path(plat_id: plat.id), method: :post, action: "add_item" do %>
+                                   <span class="input-group-btn"><button
+                                     <% if @panier.paniers_plats.find_by(plat_id: plat.id).quantité >= plat.stock %>
+                                       disabled="disabled"
+                                     <% end %>
+                                     class="btn btn-theme-round btn-number" type="button">+</button></span>
+                                 <% end %>
                               </div>
                            </td>
-                           <td class="price"><span><%= plat.prix*1  %> €</span></td>
+                           <td class="price"><span><%= plat.prix*(@panier.paniers_plats.find_by(plat_id: plat.id).quantité)  %> €</span></td>
                            <td class="action">
-                             <%= link_to remove_item_path(plat_id: plat.id), method: :post, action: "remove_item", data: { toggle: 'tooltip', placement: 'top', original_title: 'Retirer du panier' }, class: "btn btn-sm btn-danger" do %>
+                             <%= link_to destroy_item_path(plat_id: plat.id), method: :post, action: "destroy_item", data: { toggle: 'tooltip', placement: 'top', original_title: 'Retirer du panier' }, class: "btn btn-sm btn-danger" do %>
                               <i class="mdi mdi-close-circle-outline"></i></a>
                              <% end %>
                            </td>
@@ -52,13 +63,13 @@
                      <tfoot>
                         <tr>
                            <td class="text-right" colspan="5"><strong>Total</strong></td>
-                           <td class="text-danger" colspan="2"><strong><%= current_user.panier.plats.map{|plat| plat.prix}.sum %> € </strong></td>
+                           <td class="text-danger" colspan="2"><strong><%= current_user.panier.plats.map{|plat| plat.prix*(@panier.paniers_plats.find_by(plat_id: plat.id).quantité)}.sum %> € </strong></td>
                         </tr>
                      </tfoot>
                   </table>
                </div>
                <%= link_to order_path do %>
-                 <button class="btn btn-secondary btn-lg btn-block text-left" type="button"><span class="float-left"><i class="mdi mdi-cart-outline"></i> Passer la commande </span><span class="float-right"><strong><%= current_user.panier.plats.map{|plat| plat.prix}.sum %> €</strong> <span class="mdi mdi-chevron-right"></span></span></button>
+                 <button class="btn btn-secondary btn-lg btn-block text-left" type="button"><span class="float-left"><i class="mdi mdi-cart-outline"></i> Passer la commande </span><span class="float-right"><strong><%= current_user.panier.plats.map{|plat| plat.prix*(@panier.paniers_plats.find_by(plat_id: plat.id).quantité)}.sum %> €</strong> <span class="mdi mdi-chevron-right"></span></span></button>
                <% end %>
             </div>
          </div>
