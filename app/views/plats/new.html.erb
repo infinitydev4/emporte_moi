@@ -2,7 +2,7 @@
   <%= form_for(:plat, html: {method: :post, action: "create"}) do |form| %>
     <% if @plat.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(@plat.errors.count, "error") %> prohibited this panier from being saved:</h2>
+        <h2><%= pluralize(@plat.errors.count, "erreurs") %> ont empêchés le plat de se générer :</h2>
 
         <ul>
         <% @plat.errors.full_messages.each do |message| %>
