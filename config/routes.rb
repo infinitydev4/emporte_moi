@@ -10,8 +10,16 @@ Rails.application.routes.draw do
  
   get '/paniers', to: 'paniers#show', as: "paniers"
   post '/paniers', to: 'home#ajout_panier'
+
   get '/remove', to: 'paniers#remove_item', as: 'remove_item'
   post '/remove', to: 'paniers#remove_item'
+
+  get '/add' ,to: 'paniers#add_item', as: 'add_item'
+  post '/add' ,to: 'paniers#add_item'
+
+  get '/destroy', to: 'paniers#destroy_item', as: 'destroy_item'
+  post '/destroy', to: 'paniers#destroy_item'
+
   post '/', to: 'paniers#empty'
   get '/contact', to: 'home#contact'
   get '/cgu', to: 'home#cgu'

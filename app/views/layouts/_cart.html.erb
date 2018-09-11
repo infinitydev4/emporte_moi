@@ -13,7 +13,7 @@
      <% if current_user && current_user.panier %>
       <% current_user.panier.plats.each do |plat| %>
         <div class="cart-list-product">
-          <%= link_to remove_item_path(plat_id: plat.id), method: :post, action: "remove_item", data: { toggle: 'tooltip', placement: 'top', original_title: 'Retirer du panier' }, class: "float-right remove-cart" do %>
+          <%= link_to destroy_item_path(plat_id: plat.id), method: :post, action: "destroy_item", data: { toggle: 'tooltip', placement: 'top', original_title: 'Retirer du panier' }, class: "float-right remove-cart" do %>
             <i class="mdi mdi-close"></i>
           <% end %>
            <%= image_tag plat.photo_plat %>
