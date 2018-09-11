@@ -70,3 +70,5 @@ gem "aws-sdk-s3", require: false
 gem 'faker'
 gem 'mailjet', :git => 'https://github.com/mailjet/mailjet-gem.git'
 gem 'stripe'
+gem 'haml'
+gem "haml-rails", "~> 1.0"

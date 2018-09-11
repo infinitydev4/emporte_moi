@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 2018_09_09_134314) do
     t.string "titre"
     t.text "description"
     t.integer "prix"
-    t.integer "stock",default: 1
+    t.integer "stock", default: 1
     t.string "plage_horaire"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
