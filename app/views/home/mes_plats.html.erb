@@ -15,6 +15,9 @@
                         <%= link_to(destroy_restaurant_session_path, class: "list-group-item list-group-item-action", method: :delete) do %>
                           <i aria-hidden="true" class="mdi mdi-format-list-bulleted"></i>  Se déconnecter
                         <% end %>
+                        <%= link_to registration_path(:restaurant), data: { confirm: "Are you sure?" }, method: :delete, class: "list-group-item list-group-item-action bg-danger text-white" do %>
+                          <i aria-hidden="true" class="mdi mdi-alert-circle"></i>  Détruire mon compte
+                        <% end %>
                       </div>
                   </div>
                </div>
