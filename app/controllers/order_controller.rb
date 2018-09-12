@@ -25,8 +25,10 @@ class OrderController < ApplicationController
         receipt_email:params[:stripeEmail] 
     )
 
-    
-
+    @Panier = Panier.find_by(user_id: current_user.id)
+    @Panier.plats.each do |plat|
+      PaniersPlat.destroy(PaniersPlat.find_by(panier_id: @Panier.id, plat_id: plat.id).id)
+    end
 redirect_to root_url
 
 if current_user
