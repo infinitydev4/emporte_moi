@@ -1,5 +1,8 @@
 class OrderController < ApplicationController
   def new
+    @panier = current_user.panier
+    @somme = @panier.plats.map{|plat| plat.prix*(@panier.paniers_plats.find_by(plat_id: plat.id).quantité)}.sum
+
      if current_user.panier.order
     @order = current_user.panier.order
   else
@@ -8,10 +11,12 @@ class OrderController < ApplicationController
       OrdersPlat.create(order_id: @order.id, plat_id: plat.id)
     end
   end
-    
+
   end
- 
+
   def create
+    @panier = current_user.panier
+    @somme = @panier.plats.map{|plat| plat.prix*(@panier.paniers_plats.find_by(plat_id: plat.id).quantité)}.sum
     @customer = Stripe::Customer.create(
         email:params[:stripeEmail],
         source:params[:stripeToken]
@@ -19,10 +24,10 @@ class OrderController < ApplicationController
 
     charge= Stripe::Charge.create(
         customer: @customer.id,
-        amount:989,
+        amount:somme,
         description: "Payement photo de ",
         currency: 'eur',
-        receipt_email:params[:stripeEmail] 
+        receipt_email:params[:stripeEmail]
     )
 
     @Panier = Panier.find_by(user_id: current_user.id)
@@ -54,12 +59,12 @@ end
   flash[:alert]=e.message
 
   end
-  
-  
+
+
   def show
-   
+
   end
- private 
+ private
   def charges_params
     params.permit(:stripeEmail, :stripeToken, :order_id)
   end
