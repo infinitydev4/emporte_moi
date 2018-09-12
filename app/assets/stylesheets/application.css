@@ -10,7 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *= require base
- 
+
  *= require_tree .
  *= require_self
  */
@@ -20,6 +20,7 @@
 @import "owl-carousel/owl.theme.css";
 @import "icons/css/materialdesignicons.css";
 @import "select2/css/select2-bootstrap.css";
+@import url('https://fonts.googleapis.com/css?family=Oswald');
 
 .list-inline-item a{
   color: white !important;
@@ -40,7 +41,7 @@
 }
 
 .form-group {
-  width: 60%;
+  width: 40%;
   margin: auto;
   margin-bottom: 10px;
 }

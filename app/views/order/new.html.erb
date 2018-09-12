@@ -1,0 +1,56 @@
+<section class="checkout-page section-padding">
+ <div class="container">
+    <div class="row">
+       <div class="col-md-8">
+          <div class="checkout-step">
+             <div class="accordion">
+                <div class="card">
+                   <div class="card-header">
+                      <h5 class="mb-0">Paiement</h5>
+                   </div>
+                    <div class="card-body">
+                      <%= form_tag order_path do %>
+                      
+                          <article>
+                            <% if flash[:error].present? %>
+                            <div id="error_explanation">
+                              <p><%= flash[:error] %></p>
+                            </div>
+                            <% end %>
+                            <label class="amount">
+                            <span>Amount: $</span>
+                            </label>
+                          </article>
+                          
+                          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                            data-description="A month's subscription"
+                            data-amount="999"
+                            data-locale="auto">
+                            Stripe.setPublishableKey('pk_test_5GQxuFThkOL9Lw7rxINXf8Gz');
+                            </script>
+                      <% end %>
+                    </div>
+                </div>
+             </div>
+          </div>
+       </div>
+       <div class="col-md-4">
+          <div class="card">
+             <h5 class="card-header">Mon panier <span class="text-secondary float-right">(<%= current_user.panier.plats.count %> plat(s))</span></h5>
+             <div class="card-body pt-0 pr-0 pl-0 pb-0">
+               <% current_user.panier.plats.each do |plat| %>
+                 <div class="cart-list-product">
+                    <a class="float-right remove-cart" href="#"><i class="mdi mdi-close"></i></a>
+                    <%= image_tag plat.photo_plat %>
+                    <h5><a href="#"><%= plat.titre %></a></h5>
+                    <h6><strong><span class="mdi mdi-approval"></span> Disponibilité : </strong> <%= plat.plage_horaire %></h6>
+                    <p class="offer-price mb-0"><%= plat.prix %> €</p>
+                 </div>
+               <% end %>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+</section>

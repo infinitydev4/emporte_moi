@@ -5,59 +5,66 @@
      <% end %>
          <div class="my-2 my-lg-0">
             <ul class="list-inline main-nav-right">
+              <li class="list-inline-item ">
                 <% if current_user %>
-                  <li class="list-inline-item text-white dropdown">
+                  <%= link_to "Proposer un plat", new_plat_path, class: "btn btn-secondary" %>
+                <% else %>
+                  <%= link_to "Proposer un plat", new_user_session_path, class: "btn btn-secondary" %>
+                <% end %>
+              </li>
+              <% if current_user %>
+                <li class="list-inline-item text-white dropdown">
+                  <%= link_to "#",class: " dropdown-toggle", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" } do %>
+                    <%= current_user.prénom.capitalize %> <%= current_user.nom.capitalize %>
+                    <span class="caret"></span>
+                  <% end %>
+                  <div class="dropdown-menu bg-dark">
+                    <%= link_to profil_path, class: "dropdown-item" do %>
+                      <i class="mdi mdi-chevron-right" aria-hidden="true"></i>Mon profil
+                    <% end %>
+                    <%= link_to(destroy_user_session_path, class: "dropdown-item", method: :delete, style: {"border-right": "1px solid red"}) do %>
+                      <i class="mdi mdi-chevron-right" aria-hidden="true"></i>Se déconnecter
+                    <% end %>
+                  </div>
+                </li>
+                  <li class="list-inline-item cart-btn">
+                    <%=link_to "#", class: "btn btn-link border-none", data: { toggle: "offcanvas" } do %>
+                       <i class="mdi mdi-cart"></i> Mon panier <small class="cart-value">
+                       <% if current_user.panier %>
+                         <%= current_user.panier.plats.count %>
+                       <% end %>
+                     </small></a>
+                     <% end %>
+                  </li>
+                <% elsif current_restaurant %>
+                  <li class="list-inline-item text-white dropdown marg">
                     <%= link_to "#",class: " dropdown-toggle", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" } do %>
-                      <%= current_user.prénom.capitalize %> <%= current_user.nom.capitalize %>
+                      <%= current_restaurant.nom.capitalize %>
                       <span class="caret"></span>
                     <% end %>
                     <div class="dropdown-menu bg-dark">
-                      <%= link_to profil_path, class: "dropdown-item" do %>
-                        <i class="mdi mdi-chevron-right" aria-hidden="true"></i>Mon profil
+                      <%= link_to mon_restaurant_path, class: "dropdown-item" do %>
+                        <i class="mdi mdi-chevron-right" aria-hidden="true"></i>Mon restaurant
                       <% end %>
                       <%= link_to(destroy_user_session_path, class: "dropdown-item", method: :delete, style: {"border-right": "1px solid red"}) do %>
                         <i class="mdi mdi-chevron-right" aria-hidden="true"></i>Se déconnecter
                       <% end %>
                     </div>
                   </li>
-                <li class="list-inline-item cart-btn">
-                  <%=link_to "#", class: "btn btn-link border-none", data: { toggle: "offcanvas" } do %>
-                     <i class="mdi mdi-cart"></i> Mon panier <small class="cart-value">
-                     <% if current_user.panier %>
-                       <%= current_user.panier.plats.count %>
-                     <% end %>
-                   </small></a>
-                   <% end %>
-                </li>
-              <% elsif current_restaurant %>
-              <li class="list-inline-item text-white dropdown marg">
-                <%= link_to "#",class: " dropdown-toggle", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" } do %>
-                  <%= current_restaurant.nom.capitalize %>
-                  <span class="caret"></span>
+                <% else %>
+                  <li class="list-inline-item">
+                    <%=link_to "", class: "btn btn-link", data: {target: "#bd-example-modal", toggle: "modal" } do %>
+                      <i class="mdi mdi-account-circle"></i> Se connecter / S'inscrire
+                    <% end %>
+                  </li>
+                  <li class="list-inline-item cart-btn">
+                    <%=link_to "#", class: "btn btn-link border-none", data: {toggle: "offcanvas"} do %>
+                       <i class="mdi mdi-cart"></i> Mon panier <small class="cart-value">
+                       0
+                     </small>
+                    <% end %>
+                  </li>
                 <% end %>
-                <div class="dropdown-menu bg-dark">
-                  <%= link_to "#", class: "dropdown-item" do %>
-                    <i class="mdi mdi-chevron-right" aria-hidden="true"></i>Mon profil
-                  <% end %>
-                  <%= link_to(destroy_user_session_path, class: "dropdown-item", method: :delete, style: {"border-right": "1px solid red"}) do %>
-                    <i class="mdi mdi-chevron-right" aria-hidden="true"></i>Se déconnecter
-                  <% end %>
-                </div>
-              </li>
-              <% else %>
-                <li class="list-inline-item">
-                  <%=link_to "", class: "btn btn-link", data: {target: "#bd-example-modal", toggle: "modal" } do %>
-                    <i class="mdi mdi-account-circle"></i> Se connecter / S'inscrire
-                  <% end %>
-                </li>
-                <li class="list-inline-item cart-btn">
-                  <%=link_to "#", class: "btn btn-link border-none", data: {toggle: "offcanvas"} do %>
-                     <i class="mdi mdi-cart"></i> Mon panier <small class="cart-value">
-                     0
-                   </small>
-                  <% end %>
-                </li>
-              <% end %>
 
 
             </ul>

@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :plats
   has_one :panier
   has_many :orders
+  has_one_attached :image_profile
 end

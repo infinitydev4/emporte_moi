@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
 PaniersPlat.destroy_all
 Plat.destroy_all
 if User.find_by(email: "test@example.com")
@@ -13,11 +15,34 @@ if User.find_by(email: "test@example.com")
   Panier.destroy(Panier.find_by(user_id: example).id)
   User.destroy(example)
 end
-u = User.create(prénom: "Crash", nom: "Test", ville: "Nantes", téléphone: "0606060606", email: "test@example.com", password: "foobar", password_confirmation: "foobar")
+u = User.create(
+  prénom: "Crash",
+  nom: "Test",
+  ville: "Nantes",
+  téléphone: "0606060606",
+  email: "test@example.com",
+  password: "foobar",
+  password_confirmation: "foobar",
+  admin:"true"
+)
+u.image_profile.attach(
+  io: File.open("app/assets/images/avatar.jpg"),
+  filename: "avatar.jpg"
+)
 pan = Panier.create(user_id: u.id)
-4.times do |i|
+7.times do |i|
 
-  plat = Plat.create(user_id: u.id, titre: "plat#{i}", description: "voilà mon plat", prix: 9, stock: 1, plage_horaire: "8h-20h", image_url: "plat#{i}")
+  plat = Plat.create(user_id: u.id,
+    titre: Faker::Food.dish,
+    description: Faker::Food.description,
+    prix: 9,
+    stock: 1,
+    plage_horaire: "8h-20h"
+  )
+  plat.photo_plat.attach(
+    io: File.open("app/assets/images/plat#{i}.jpeg"),
+    filename: "plat#{i}.jpeg"
+  )
   PaniersPlat.create(panier_id: pan.id, plat_id: plat.id, quantité: 1)
   i += 1;
 

@@ -24,8 +24,17 @@ class PaniersController < ApplicationController
     redirect_to paniers_path
   end
 
-  def remove_item
+  def destroy_item
     PaniersPlat.destroy(PaniersPlat.find_by(plat_id: params[:plat_id]).id)
+    redirect_to paniers_path
+  end
+
+  def remove_item
+    PaniersPlat.find_by(plat_id: params[:plat_id]).update(quantité: PaniersPlat.find_by(plat_id: params[:plat_id]).quantité - 1)
+    redirect_to paniers_path
+  end
+  def add_item
+    PaniersPlat.find_by(plat_id: params[:plat_id]).update(quantité: PaniersPlat.find_by(plat_id: params[:plat_id]).quantité + 1)
     redirect_to paniers_path
   end
   # GET /paniers/new

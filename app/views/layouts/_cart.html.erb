@@ -2,7 +2,7 @@
    <div class="cart-sidebar-header">
       <h5>
            <% if current_user && current_user.panier %>
-             Mon panier <span class="text-success">(<%= current_user.panier.plats.count %> plat(s))</span> 
+             Mon panier <span class="text-success">(<%= current_user.panier.plats.count %> plat(s))</span>
            <% else %>
              Mon panier est vide !
            <% end %>
@@ -11,20 +11,22 @@
    </div>
    <div class="cart-sidebar-body">
      <% if current_user && current_user.panier %>
-      <% current_user.panier.plats.each do |plat| %> 
-      <div class="cart-list-product">
-         <a class="float-right remove-cart" href="#"><i class="mdi mdi-close"></i></a>
-         <%= image_tag plat.image_url %>
-         <h5><a href="#"><%= plat.titre %></a></h5>
-         <h6><strong><span class="mdi mdi-approval"></span> Disponibilité : </strong> <%= plat.plage_horaire %></h6>
-         <p class="offer-price mb-0"><%= plat.prix %> €</p>
-      </div>
+      <% current_user.panier.plats.each do |plat| %>
+        <div class="cart-list-product">
+          <%= link_to destroy_item_path(plat_id: plat.id), method: :post, action: "destroy_item", data: { toggle: 'tooltip', placement: 'top', original_title: 'Retirer du panier' }, class: "float-right remove-cart" do %>
+            <i class="mdi mdi-close"></i>
+          <% end %>
+           <%= image_tag plat.photo_plat %>
+           <h5><a href=<%= plat_path(id: plat.id) %>><%= plat.titre %></a></h5>
+           <h6><strong><span class="mdi mdi-approval"></span> Disponibilité : </strong> <%= plat.plage_horaire %></h6>
+           <p class="offer-price mb-0"><%= plat.prix %> €</p>
+        </div>
       <% end %>
      <% end %>
    </div>
    <div class="cart-sidebar-footer">
       <div class="cart-store-details">
-         
+
          <h6>Total <strong class="float-right">
            <% if current_user && current_user.panier %>
              <%= current_user.panier.plats.map{|plat| plat.prix}.sum %> €
