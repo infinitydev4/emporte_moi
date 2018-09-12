@@ -1,8 +1,6 @@
 # frozen_string_literal: true
-require 'dotenv'
-Dotenv.load
 
-class Users::RegistrationsController < Devise::RegistrationsController
+class Restaurant::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -14,29 +12,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    current_user.image_profile.attach(
-      io: File.open("app/assets/images/avatar.jpg"),
-      filename: "avatar.jpg"
+    current_restaurant.image_resto.attach(
+      io: File.open("app/assets/images/avatar.png"),
+      filename: "avatar-resto.png"
     )
-    if current_user
-      email = { messages: [{
-        'From'=> {
-            'Email'=> ENV['PRIVATE_EMAIL_ADRESS'],
-            'Name'=> 'Emporte-moi'
-        },
-        'To'=> [
-            {
-                'Email'=> current_user.email,
-                'Name'=> current_user.prénom
-            }
-        ],
-        'Subject'=> 'Bienvenue sur Emporte-moi !',
-        'TextPart'=> "Salut #{current_user.prénom.capitalize}. Merci de ton inscription sur le site ! Tu peux à présent commander autant de plats que tu veux !",
-        'HTMLPart'=> "<h1>Salut #{current_user.prénom.capitalize}</h1>. <h2>Merci de ton inscription sur le site ! Tu peux à présent commander autant de plats que tu veux !</h2>"
-      }]}
-      test = Mailjet::Send.create(email)
-
-    end
   end
 
   # GET /resource/edit
@@ -50,12 +29,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # DELETE /resource
-  def destroy
-    Order.destroy(current_user.order.id)
-    Panier.destroy(current_user.panier.id)
-    Plat.destroy(current_user.plats)
-    super
-  end
+  # def destroy
+  #   super
+  # end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign

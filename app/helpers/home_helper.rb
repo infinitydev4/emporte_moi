@@ -11,4 +11,9 @@ module HomeHelper
     return numspace[0..13]
   end
 
+  def geoloc(adresse)
+    results = Geocoder.search(adresse)
+    return results.first.coordinates
+  end
+
 end
