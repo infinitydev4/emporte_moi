@@ -89,6 +89,8 @@ ActiveRecord::Schema.define(version: 2018_09_12_173226) do
     t.string "plage_horaire"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "restaurant_id"
+    t.index ["restaurant_id"], name: "index_plats_on_restaurant_id"
     t.index ["user_id"], name: "index_plats_on_user_id"
   end
 

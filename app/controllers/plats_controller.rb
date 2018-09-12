@@ -2,7 +2,7 @@ class PlatsController < ApplicationController
     def show
      @plat=Plat.find(params[:id])
     end
-    
+
     def index
       @plat=Plat.all
     end
@@ -13,10 +13,15 @@ class PlatsController < ApplicationController
     def edit
     end
     def create
-      if current_user 
+      if current_user
         @plat = Plat.new(plat_params)
-        @plat.user_id=current_user.id
-        
+        if current_user
+          @plat.user_id=current_user.id
+        else
+          @plat.restaurant_id = current_restaurant.id
+        end
+
+
         respond_to do |format|
           if @plat.save
             format.html { redirect_to @plat, notice: 'Panier was successfully created.' }
