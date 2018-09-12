@@ -1,3 +1,28 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.h1
+{
+    display: flex; 
+    justify-content: center;
+}
+.div2
+{
+    display: flex; 
+    justify-content: center; 
+}
+
+.div3
+{
+    margin: 10px 50px 20px;
+}
+
+.div1-contact
+{
+    display: flex; 
+    justify-content: center;
+    // margin: 10px 50px 20px 30px;
+   position: absolute;
+   bottom: 0;
+}

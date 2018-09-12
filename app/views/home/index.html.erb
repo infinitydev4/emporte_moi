@@ -10,11 +10,10 @@
         <% Plat.all.each do |plat| %>
            <div class="item">
               <div class="product">
-                 <%= link_to plats_path(id: plat.id) do %>
+                 <%= link_to plat_path(id: plat.id) do %>
                     <div class="product-header">
                        <%= image_tag plat.image_url %>
                     </div>
-                    <%end%>
                     <div class="product-body">
                        <h5><%= plat.titre %></h5>
                        <h6><strong> Disponibilité : </strong> <%= plat.plage_horaire %></h6>
@@ -65,8 +64,8 @@
 <section class="section-padding footer bg-white border-top">
    <div class="container">
       <div class="row">
+        <h4 class="mb-5 mt-0"><a class="logo" href="index.html"><img src="assets/img/logo-footer.png" alt="Groci"></a></h4>
          <div class="col-lg-3 col-md-3">
-            <h4 class="mb-5 mt-0"><a class="logo" href="index.html"><img src="assets/img/logo-footer.png" alt="Groci"></a></h4>
             <p class="mb-0"><a class="text-dark" href="#"><i class="mdi mdi-cellphone-iphone"></i> 06 36 65 65 65</a></p>
             <p class="mb-0"><a class="text-success" href="#"><i class="mdi mdi-email"></i> nicolaslucain@gmail.com</a></p>
             <p class="mb-0"><a class="text-primary" href="#"><i class="mdi mdi-web"></i> nicolebgdu44.fr</a></p>
