@@ -10,6 +10,7 @@
                    </div>
                     <div class="card-body">
                       <%= form_tag order_path do %>
+                      
                           <article>
                             <% if flash[:error].present? %>
                             <div id="error_explanation">
@@ -20,11 +21,14 @@
                             <span>Amount: $</span>
                             </label>
                           </article>
+                          
                           <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                             data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
                             data-description="A month's subscription"
                             data-amount="999"
-                            data-locale="auto"></script>
+                            data-locale="auto">
+                            Stripe.setPublishableKey('pk_test_5GQxuFThkOL9Lw7rxINXf8Gz');
+                            </script>
                       <% end %>
                     </div>
                 </div>

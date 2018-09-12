@@ -22,7 +22,8 @@ u = User.create(
   téléphone: "0606060606",
   email: "test@example.com",
   password: "foobar",
-  password_confirmation: "foobar"
+  password_confirmation: "foobar",
+  admin:"true"
 )
 u.image_profile.attach(
   io: File.open("app/assets/images/avatar.jpg"),
