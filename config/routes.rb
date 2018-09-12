@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :comments
   resources :plats
   devise_for :restaurants
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
@@ -29,5 +28,8 @@ Rails.application.routes.draw do
   get '/mes_plats', to: 'home#mes_plats', as: 'mes_plats'
   get '/mes_commandes', to: 'home#mes_commandes', as: 'mes_commandes'
   post '/plats/new', to: 'plats#create'
-  
+  get '/particulier/:name', to: 'home#particulier', as: 'particulier'
+  resources :users do
+    resources :comments
+  end
 end

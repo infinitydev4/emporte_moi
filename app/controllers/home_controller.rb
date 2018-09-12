@@ -35,4 +35,8 @@ class HomeController < ApplicationController
   def mes_plats
     @resto = current_restaurant
   end
+
+  def particulier
+    @user = current_user
+  end
 end

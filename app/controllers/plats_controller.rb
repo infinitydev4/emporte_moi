@@ -30,6 +30,7 @@ class PlatsController < ApplicationController
     end
     def show
       @plat=Plat.find(params[:id])
+      @user = User.find(@plat.user_id)
      end
 def update
     respond_to do |format|
