@@ -35,4 +35,8 @@ class HomeController < ApplicationController
   def mes_plats
     @resto = current_restaurant
   end
+  
+  def search
+    @search = Plat.find_by(titre: params[:titre])
+  end
 end
