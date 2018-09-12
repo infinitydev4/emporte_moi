@@ -35,7 +35,7 @@ pan = Panier.create(user_id: u.id)
     titre: Faker::Food.dish,
     description: Faker::Food.description,
     prix: 9,
-    stock: 1,
+    stock: 5,
     plage_horaire: "8h-20h"
   )
   plat.photo_plat.attach(
