@@ -1,7 +1,10 @@
 RailsAdmin.config do |config|
 
   ### Popular gems integration
-
+  
+  config.authorize_with do
+    redirect_to main_app.root_path unless (!current_user.nil? && current_user.admin == true)
+end
   ## == Devise ==
   # config.authenticate_with do
   #   warden.authenticate! scope: :user

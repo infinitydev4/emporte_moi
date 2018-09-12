@@ -12,10 +12,9 @@ class OrderController < ApplicationController
   end
  
   def create
-    @panier = Panier.find_by(user_id: current_user.id)
     @customer = Stripe::Customer.create(
         email:params[:stripeEmail],
-        source:params[:stripeToken],
+        source:params[:stripeToken]
       )
 
     charge= Stripe::Charge.create(
@@ -23,13 +22,32 @@ class OrderController < ApplicationController
         amount:989,
         description: "Payement photo de ",
         currency: 'eur',
-        receipt_email:params[:stripeEmail] ,
+        receipt_email:params[:stripeEmail] 
     )
 
     
 
-redirect_to root_path
+redirect_to root_url
 
+if current_user
+  email = { messages: [{
+    'From'=> {
+        'Email'=> ENV['PRIVATE_EMAIL_ADRESS'],
+        'Name'=> 'Emporte-moi'
+    },
+    'To'=> [
+        {
+            'Email'=> current_user.email,
+            'Name'=> current_user.prénom
+        }
+    ],
+    'Subject'=> 'Facture sur Emporte-moi !',
+    'TextPart'=> "Salut #{current_user.prénom.capitalize}. Merci de ton inscription sur le site ! Tu peux à présent commander autant de plats que tu veux !",
+    'HTMLPart'=> "<h1>Salut #{current_user.prénom.capitalize}</h1>. <h2>Merci de ton inscription sur le site ! Tu peux à présent commander autant de plats que tu veux !</h2>"
+  }]}
+  test = Mailjet::Send.create(email)
+
+end
     rescue Stripe::CardError => e
   flash[:alert]=e.message
 
@@ -39,5 +57,8 @@ redirect_to root_path
   def show
    
   end
-
+ private 
+  def charges_params
+    params.permit(:stripeEmail, :stripeToken, :order_id)
+  end
 end
