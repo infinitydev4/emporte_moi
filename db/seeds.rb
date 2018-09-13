@@ -18,7 +18,7 @@ if User.find_by(email: "test@example.com")
     Panier.destroy(Panier.find_by(user_id: example).id)
   end
   if Comment.find_by(user_id: example)
-    Comment.find_by(user_id: example).destroy_all
+    Comment.destroy(Comment.find_by(user_id: example).id)
   end
   User.destroy(example)
 end
