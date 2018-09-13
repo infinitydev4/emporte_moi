@@ -22,19 +22,18 @@
             
            </div>
           <div class="col-md-9">
-             <a href="#"><img class="img-fluid mb-3" src="img/shop.jpg" alt=""></a>
-             <div class="shop-head">
-                
                
                 <h5 class="mb-3">Reseach</h5>
              </div>
-             <div class="row no-gutters">
-                    <% @search.each do |search| %>
+             <div class="card-container">
+                <% @search.each do |search| %>
+                <div class="card" style="width: 222px">
+                    
                     <div class="item">
                        <div class="product">
                           <%= link_to plat_path(id: search.id) do %>
                              <div class="product-header">
-                                <%= image_tag search.photo_plat %>
+                              <%= image_tag search.photo_plat, style: "object-fit:cover" %>
                              </div>
                              <div class="product-body">
                                 <h5><%= search.titre %></h5>
@@ -47,7 +46,9 @@
                          <% end %>
                        </div>
                     </div>
-                  <% end %>
+                  
+                </div>
+                <% end %>
        </div>
     </div>
  </section>

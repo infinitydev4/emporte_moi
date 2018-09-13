@@ -13,3 +13,68 @@
 .shop-detail-right{
     margin-top: 80px;
 }
+
+div.card-container{
+ display: flex;
+ flex-wrap: wrap;
+ align-content: center;
+ justify-content: center
+ 
+}
+element {
+    position: absolute;
+    will-change: transform;
+    top: 0px;
+    left: 0px;
+    transform: translate3d(-2px, -191px, 0px);
+}
+.dropdown-menu.show {
+    display: block;
+}
+.dropdown-menu[x-placement^="bottom"], .dropdown-menu[x-placement^="left"], .dropdown-menu[x-placement^="right"], .dropdown-menu[x-placement^="top"] {
+    right: auto;
+    bottom: auto;
+}
+.dropdown-menu {
+    border: none;
+    border-radius: 0 0 2px 2px;
+    box-shadow: 0 4px 4px #dcdcdc;
+    margin: 0;
+}
+.dropdown-menu-right {
+    right: 0;
+    left: auto;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 10rem;
+    padding: .5rem 0;
+    margin: .125rem 0 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+}
+ ::after, ::before {
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Maven Pro',sans-serif;
+    line-height: 25px;
+}
+.btn, body, p {
+    font-size: 13px;
+}
+a, body, p {
+    color: #888;
+}
+
