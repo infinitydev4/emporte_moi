@@ -48,7 +48,6 @@ class PlatsController < ApplicationController
         end
       end
     end
-
 def update
     respond_to do |format|
       if @plat.update(plat_params)
