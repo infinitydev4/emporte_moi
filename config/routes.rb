@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
+  get 'search/new'
+  get 'search/create'
+  get 'search/show'
   resources :plats
+  resources :searches 
   devise_for :restaurants
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root to: 'home#index'
 
   get '/commande', to: "order#new", as: "order"
   post '/commande', to: "order#create"
-  get '/search', to:"plats#search", as:"search"
+  get '/reseach', to: "plats#search", as: "research"
   devise_for :users, :controllers => {:registrations => "users/registrations"}
 
   get '/paniers', to: 'paniers#show', as: "paniers"
