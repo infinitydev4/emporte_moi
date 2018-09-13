@@ -1,7 +1,7 @@
 <section class="account-page section-padding">
    <div class="container">
       <div class="row">
-         <div class="col-lg-12 mx-auto">
+         <div class="col-lg-8 mx-auto">
             <div class="row no-gutters">
                <div class="col-md-12">
                   <div class="card card-body account-right">
@@ -10,7 +10,10 @@
                        <h5 class="mb-1 text-secondary"> <%= @resto.nom.capitalize %></h5>
                        <p> <%= show_num(@resto.téléphone) %></p>
                     </div>
-
+                    <center>
+                      <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?center='#{geoloc(@resto.adresse)[0]},#{geoloc(@resto.adresse)[1]}'&zoom=15&size=600x600&maptype=roadmap
+                      &markers=color:red%7Clabel:S%7C#{geoloc(@resto.adresse)[0]},#{geoloc(@resto.adresse)[1]}&key=#{@apikey}", style: "width:500px;" %>
+                    </center>
                   </div>
                </div>
             </div>
