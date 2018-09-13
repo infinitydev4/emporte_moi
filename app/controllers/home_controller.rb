@@ -1,3 +1,5 @@
+require "dotenv"
+Dotenv.load
 class HomeController < ApplicationController
   def index
     @user = User.new
@@ -40,6 +42,7 @@ class HomeController < ApplicationController
     @user = User.find_by(nom:params[:name])
   end
   def restaurant
-    @resto = Restaurant.find_by(nom: "Resto-test")
+    @resto = Restaurant.find_by(nom: "Resto-Test")
+    @apikey = ENV['API_KEY']
   end
 end
