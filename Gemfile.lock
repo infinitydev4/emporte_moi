@@ -334,6 +334,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   faker
+  font-awesome-rails
   geocoder
   gmaps4rails
   haml

@@ -6,7 +6,7 @@
       <%= form.text_field :titre, class: "form-control" %>
     </div>
 
-        <div class="form-group" >
+        <div class="form-group" " >
       <%= form.label :body, class: "control-label" %><br />
       <%= form.text_field :body, class: "form-control" %>
     </div>
@@ -17,11 +17,19 @@
     </div>
 
     <%end%>
-
     <%Comment.all.each do |c|%>
-    <%= c.titre %><br>
-    
+    <div class= "container">
+     <div class="row ">
+   <div class="a-5">
+   <div class="a-5-m a-bg-orange">
     <%= c.body%><br>
-    <%end%>
+    </div>
     
+    <!-- Author Name and Designation -->
+    <h4><%=c.titre%> <span><%=%></span></h4>
+    </div>
+    </div>
+    </div>
+    <%end%>
     </center>
+    

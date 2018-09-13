@@ -74,3 +74,4 @@ gem 'haml'
 gem "haml-rails", "~> 1.0"
 gem 'geocoder'
 gem 'gmaps4rails'
+gem "font-awesome-rails"

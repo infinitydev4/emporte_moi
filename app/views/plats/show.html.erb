@@ -35,13 +35,14 @@
                  </span></p>
               </h5>
               <p><%= @plat.description %></p>
-              <p><%= link_to @user.nom,particulier_path(name:@user.nom) %></p>
               </p>
            </div>
            <div class="short-description">
              Ce plat vous est proposé par :
              <% if @plat.user_id %>
-               <%= @user.prénom %> <%= @user.nom %> <%= image_tag @user.image_profile, style: "width:80px;border-radius: 50%;" %>
+                <%= link_to particulier_path(name:@user.nom) do %>
+                  <%= @user.prénom %> <%= @user.nom %> <%= image_tag @user.image_profile, style: "width:80px;border-radius: 50%;" %>
+                <%end%>
              <% elsif @plat.restaurant_id %>
              <%= link_to profil_resto_path(name: @resto.nom) do %>
                <%= @resto.nom %> <%= image_tag @resto.image_resto, style: "width:80px;border-radius: 50%;" %>
