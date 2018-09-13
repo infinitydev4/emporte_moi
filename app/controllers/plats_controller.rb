@@ -1,6 +1,12 @@
 class PlatsController < ApplicationController
     def show
      @plat=Plat.find(params[:id])
+     if @plat.user_id
+       @user = User.find(@plat.user_id)
+     elsif @plat.restaurant_id
+       @resto = Restaurant.find(@plat.restaurant_id)
+     end
+
     end
 
     def index
@@ -12,15 +18,24 @@ class PlatsController < ApplicationController
 
     def edit
     end
+
     def create
       if current_user
         @plat = Plat.new(plat_params)
-        if current_user
-          @plat.user_id=current_user.id
-        else
-          @plat.restaurant_id = current_restaurant.id
-        end
+        @plat.user_id=current_user.id
 
+        respond_to do |format|
+          if @plat.save
+            format.html { redirect_to @plat, notice: 'Panier was successfully created.' }
+            format.json { render :show, status: :created, location: @plat}
+          else
+            format.html { render :new }
+            format.json { render json: @plat.errors, status: :unprocessable_entity }
+          end
+        end
+      elsif current_restaurant
+        @plat = Plat.new(plat_params)
+        @plat.restaurant_id = current_restaurant.id
 
         respond_to do |format|
           if @plat.save
@@ -33,9 +48,7 @@ class PlatsController < ApplicationController
         end
       end
     end
-    def show
-      @plat=Plat.find(params[:id])
-     end
+
 def update
     respond_to do |format|
       if @plat.update(plat_params)
@@ -58,7 +71,7 @@ def update
     end
   end
   def plat_params
-    params.require(:plat).permit(:titre, :description, :prix, :stock, :plage_horaire, :image_url, :photo_plat,:current_user)
+    params.require(:plat).permit(:titre, :description, :prix, :stock, :plage_horaire, :image_url, :photo_plat,:current_user,:current_restaurant)
   end
 
 end

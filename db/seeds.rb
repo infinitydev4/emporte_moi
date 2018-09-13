@@ -23,7 +23,7 @@ u = User.create(
   prénom: "Crash",
   nom: "Test",
   ville: "Nantes",
-  téléphone: "0606060606",
+  téléphone: "0665231457",
   email: "test@example.com",
   password: "foobar",
   password_confirmation: "foobar",

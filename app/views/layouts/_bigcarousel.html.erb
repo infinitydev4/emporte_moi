@@ -2,8 +2,10 @@
    <div class="owl-carousel owl-carousel-slider">
      <% Plat.all.each do |plat| %>
       <div class="item">
-         <a href=""> <%= image_tag plat.photo_plat, style: "width:800px; height:500px;object-fit:cover;" %></a>
+       <%= link_to plat_path(id: plat.id) do %>
+        <%= image_tag plat.photo_plat, style: "width:800px; height:500px;object-fit:cover;" %>
+       <% end %>
       </div>
-      <% end %>
+     <% end %>
    </div>
 </section>
