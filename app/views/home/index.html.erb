@@ -3,7 +3,7 @@
    <div class="container">
       <div class="section-header">
          <h5 class="heading-design-h5">Les plats du moment
-            <a class="float-right text-secondary" href="shop.html">Voir plus</a>
+            <!-- <a class="float-right text-secondary" href="shop.html">Voir plus</a> -->
          </h5>
       </div>
       <div class="owl-carousel owl-carousel-featured">
@@ -12,7 +12,7 @@
               <div class="product">
                  <%= link_to plat_path(id: plat.id) do %>
                     <div class="product-header">
-                       <%= image_tag plat.photo_plat %>
+                       <%= image_tag plat.photo_plat, style: "object-fit:cover" %>
                     </div>
                     <div class="product-body">
                        <h5><%= plat.titre %></h5>
