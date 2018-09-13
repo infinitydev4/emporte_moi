@@ -36,12 +36,15 @@ ActiveRecord::Schema.define(version: 2018_09_13_134619) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+<<<<<<< HEAD
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+=======
+>>>>>>> f57b96ae2f1dd2a4c21e2ead49bd476e07ccc00e
   create_table "comments", force: :cascade do |t|
     t.bigint "user_id"
     t.string "titre"

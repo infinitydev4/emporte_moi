@@ -77,7 +77,6 @@ def update
     else
       @search = Plat.all
     end
-    @category= Plat.uniq.pluck(:category)
   end
   
   def plat_params
