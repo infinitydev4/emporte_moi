@@ -37,6 +37,6 @@ class HomeController < ApplicationController
   end
 
   def particulier
-    @user = current_user
+    @user = User.find_by(nom:params[:name])
   end
 end
