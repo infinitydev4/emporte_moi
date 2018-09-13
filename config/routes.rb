@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get '/commande', to: "order#new", as: "order"
   post '/commande', to: "order#create"
-  get '/search', to:"home#search", as:"search"
+  get '/search', to:"plats#search", as:"search"
   devise_for :users, :controllers => {:registrations => "users/registrations"}
 
   get '/paniers', to: 'paniers#show', as: "paniers"

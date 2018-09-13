@@ -1,0 +1,160 @@
+
+
+ 
+ <section class="shop-list section-padding">
+    <div class="container">
+       <div class="row">
+          <div class="col-md-3">
+              <div class="shop-filters">
+                 <div id="accordion">
+                    <div class="card">
+                       <div class="card-header" id="headingOne">
+                          <h5 class="mb-0">
+                             <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                             Category <span class="mdi mdi-chevron-down float-right"></span>
+                             </button>
+                          </h5>
+                       </div>
+                       <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                          <div class="card-body card-shop-filters">
+                              <%= form_(search_path, :method => "get") do %>
+                                  <%= text_field_tag :Category, params[:Category], placeholder: "Chercher un plat par Category" %>
+                                  <%= submit_tag "Search", :name => nil %>
+                              <% end %>
+                              <div>
+                                  <%= form_(search_path, :method => "get") do %>
+                                <%= select :Category, option_for_select(@categories) :include_blank => true %>
+                                <% end %>
+                              </div>
+                             
+                          </div>
+                       </div>
+                    </div>
+                    <div class="card">
+                       <div class="card-header" id="headingTwo">
+                          <h5 class="mb-0">
+                             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                             Price <span class="mdi mdi-chevron-down float-right"></span>
+                             </button>
+                          </h5>
+                       </div>
+                       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                          <div class="card-body card-shop-filters">
+                              <%= form_(search_path, :method => "get") do %>
+                              <%= select :minPrice, option_for_select(@categories) :include_blank => true %>
+                                <%end   %>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="card">
+                       <div class="card-header" id="headingThree">
+                          <h5 class="mb-0">
+                             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                             User <span class="mdi mdi-chevron-down float-right"></span>
+                             </button>
+                          </h5>
+                       </div>
+                       <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                          <div class="card-body card-shop-filters">
+                              <%= form_tag(search_path, :method => "get") do %>
+                              <%= text_field_tag :nom, params[:nom], placeholder: "Chercher un User" %>
+                              <%= submit_tag "Search", :name => nil %>
+                            <% end %>
+                             <div class="custom-control custom-checkbox">
+                              
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="card">
+                            <div class="card-header" id="headingThree">
+                               <h5 class="mb-0">
+                                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                                  Resto <span class="mdi mdi-chevron-down float-right"></span>
+                                  </button>
+                               </h5>
+                            </div>
+                            <div id="collapseFour" class="collapse" aria-labelledby="headingfour" data-parent="#accordion">
+                               <div class="card-body card-shop-filters">
+                                   <%= form_tag(search_path, :method => "get") do %>
+                                   <%= text_field_tag :nom, params[:nom], placeholder: "Chercher un resto" %>
+                                   <%= submit_tag "Search", :name => nil %>
+                                 <% end %>
+                                  
+                               </div>
+                            </div>
+                         
+                    </div>
+                 </div>
+              </div>
+            
+           </div>
+          <div class="col-md-9">
+             <a href="#"><img class="img-fluid mb-3" src="img/shop.jpg" alt=""></a>
+             <div class="shop-head">
+                <a href="#"><span class="mdi mdi-home"></span> Home</a> <span class="mdi mdi-chevron-right"></span> <a href="#">Fruits & Vegetables</a> <span class="mdi mdi-chevron-right"></span> <a href="#">Fruits</a>
+                <div class="btn-group float-right mt-2">
+                   <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   Sort by Products &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   </button>
+                   <div class="dropdown-menu dropdown-menu-right">
+                      <a class="dropdown-item" href="#">Relevance</a>
+                      <a class="dropdown-item" href="#">Price (Low to High)</a>
+                      <a class="dropdown-item" href="#">Price (High to Low)</a>
+                      <a class="dropdown-item" href="#">Discount (High to Low)</a>
+                      <a class="dropdown-item" href="#">Name (A to Z)</a>
+                   </div>
+                </div>
+                <h5 class="mb-3">Fruits</h5>
+             </div>
+             <div class="row no-gutters">
+                    <% @search.each do |search| %>
+                    <div class="item">
+                       <div class="product">
+                          <%= link_to plat_path(id: search.id) do %>
+                             <div class="product-header">
+                                <%= image_tag search.photo_plat %>
+                             </div>
+                             <div class="product-body">
+                                <h5><%= search.titre %></h5>
+                                <h6><strong> Disponibilité : </strong> <%= search.plage_horaire %></h6>
+                             </div>
+                             <div class="product-footer">
+                               
+                               <p class="offer-price"><%= search.prix %>€</p>
+                             </div>
+                         <% end %>
+                       </div>
+                    </div>
+                  <% end %>
+       </div>
+    </div>
+ </section>
+ <section class="section-padding bg-white border-top">
+    <div class="container">
+       <div class="row">
+          <div class="col-lg-4 col-sm-6">
+             <div class="feature-box">
+                <i class="mdi mdi-truck-fast"></i>
+                <h6>Free & Next Day Delivery</h6>
+                <p>Lorem ipsum dolor sit amet, cons...</p>
+             </div>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+             <div class="feature-box">
+                <i class="mdi mdi-basket"></i>
+                <h6>100% Satisfaction Guarantee</h6>
+                <p>Rorem Ipsum Dolor sit amet, cons...</p>
+             </div>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+             <div class="feature-box">
+                <i class="mdi mdi-tag-heart"></i>
+                <h6>Great Daily Deals Discount</h6>
+                <p>Sorem Ipsum Dolor sit amet, Cons...</p>
+             </div>
+          </div>
+       </div>
+    </div>
+ </section>

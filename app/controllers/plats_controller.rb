@@ -70,6 +70,16 @@ def update
       format.json { head :no_content }
     end
   end
+
+  def search
+    
+    if params[:titre]
+      @search = Plat.search(params[:titre])
+    else
+      @search = Plat.all
+    end
+  end
+  
   def plat_params
     params.require(:plat).permit(:titre, :description, :prix, :stock, :plage_horaire, :image_url, :photo_plat,:current_user,:current_restaurant)
   end
