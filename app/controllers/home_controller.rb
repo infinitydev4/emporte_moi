@@ -38,5 +38,7 @@ class HomeController < ApplicationController
 
   def particulier
     @user = User.find_by(nom:params[:name])
+  def restaurant
+    @resto = Restaurant.find_by(nom: "Resto-test")
   end
 end

@@ -1,0 +1,20 @@
+<section class="account-page section-padding">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-12 mx-auto">
+            <div class="row no-gutters">
+               <div class="col-md-12">
+                  <div class="card card-body account-right">
+                    <div class="user-profile-header">
+                      <%= image_tag @resto.image_resto %>
+                       <h5 class="mb-1 text-secondary"> <%= @resto.nom.capitalize %></h5>
+                       <p> <%= show_num(@resto.téléphone) %></p>
+                    </div>
+
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
