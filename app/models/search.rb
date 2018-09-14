@@ -5,12 +5,13 @@ class Search < ApplicationRecord
         resto=Restaurant.all
         tag=Category.all
         user=User.all
-        dish=plats.where(["titre LIKE ?","%#{keyword}%"]) if keyword.present?
-        dish=tag.where(["name LIKE ?","%#{category}%"]).plats if category.present?
+        dish=plats.where(["lower(titre) LIKE ?","%#{keyword}%"]) if keyword.present?
+        dish=plats.where(["name LIKE ?","%#{category}%"]) if category.present?
         dish=plats.where(["prix >= ?",min_prix]) if min_prix.present?
-        dish=plats.where(["prix >= ?",max_prix]) if max_prix.present?
-        dish=resto.where("nom LIKE ?","%#{nom}%").plats if nom.present?
-        dish=user.where("nom LIKE ?","%#{prénom}%").plats if prénom.present?
+        dish=plats.where(["prix <= ?",max_prix]) if max_prix.present?
+        dish=plats.joins(:user).where("nom LIKE ?","%#{prénom}%") if prénom.present?
+        dish=plats.join(:restaurant).where("nom LIKE ?","%#{nom}%")[0] if nom.present?
+        
 
         return dish
     end
