@@ -26,6 +26,7 @@ u = User.create(
   prénom: "Crash",
   nom: "Test",
   ville: "Nantes",
+  adresse: "2 rue de la Biscuiterie, 44000 Nantes",
   téléphone: "0665231457",
   email: "test@example.com",
   password: "foobar",
@@ -43,7 +44,7 @@ if Restaurant.find_by(email: "resto@example.com")
 end
 
 r = Restaurant.create(
-  nom: "Resto-Test",
+  nom: "Resto",
   adresse: "2 rue de la Biscuiterie, 44000 Nantes",
   téléphone: "0635214578",
   email: "resto@example.com",
