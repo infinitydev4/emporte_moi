@@ -62,3 +62,7 @@
 .marg {
   margin-right: 70px !important;
 }
+
+.round {
+  border-radius: 50%;
+}
