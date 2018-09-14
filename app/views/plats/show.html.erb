@@ -43,7 +43,7 @@
                   <%= @user.prénom %> <%= @user.nom %> <%= image_tag @user.image_profile, style: "width:80px;border-radius: 50%;" %>
                 <%end%>
              <% elsif @plat.restaurant_id %>
-             <%= link_to profil_resto_path(name: @resto.nom) do %>
+             <%= link_to restaurant_path(name: @resto.nom) do %>
                <%= @resto.nom %> <%= image_tag @resto.image_resto, style: "width:80px;border-radius: 50%;" %>
               <% end %>
              <% end %>
