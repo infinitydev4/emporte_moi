@@ -1,0 +1,12 @@
+
+    <div class="card account-left">
+        <div class="user-profile-header">
+            <h5 class="mb-1 text-secondary"> <%= @user.prénom%> <%= @user.nom %></h5>
+            <%= image_tag @user.image_profile %>
+            <p> <%= show_num(@user.téléphone) %></p>
+        </div>
+    </div>
+        <center>
+        <h3>Commentaires</h3>
+        </center>
+    <%= render partial: 'comments/form' %>

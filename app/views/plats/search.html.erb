@@ -1,0 +1,81 @@
+
+
+ 
+ <section class="shop-list section-padding">
+    <div class="container">
+       <div class="row">
+          <div class="col-md-3">
+            <div class="btn-group float-right mt-2">
+                <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sort by Products &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                   <a class="dropdown-item" href="#">Relevance</a>
+                   <a class="dropdown-item" href="#">Price (Low to High)</a>
+                   <a class="dropdown-item" href="#">Price (High to Low)</a>
+                   <a class="dropdown-item" href="#">Discount (High to Low)</a>
+                   <a class="dropdown-item" href="#">Name (A to Z)</a>
+                </div>
+             </div>
+                 </div>
+              </div>
+            
+           </div>
+          <div class="col-md-9">
+               
+                <h5 class="mb-3">Reseach</h5>
+             </div>
+             <div class="card-container">
+                <% @search.each do |search| %>
+                <div class="card" style="width: 222px">
+                    
+                    <div class="item">
+                       <div class="product">
+                          <%= link_to plat_path(id: search.id) do %>
+                             <div class="product-header">
+                              <%= image_tag search.photo_plat, style: "object-fit:cover" %>
+                             </div>
+                             <div class="product-body">
+                                <h5><%= search.titre %></h5>
+                                <h6><strong> Disponibilité : </strong> <%= search.plage_horaire %></h6>
+                             </div>
+                             <div class="product-footer">
+                               
+                               <p class="offer-price"><%= search.prix %>€</p>
+                             </div>
+                         <% end %>
+                       </div>
+                    </div>
+                  
+                </div>
+                <% end %>
+       </div>
+    </div>
+ </section>
+ <section class="section-padding bg-white border-top">
+    <div class="container">
+       <div class="row">
+          <div class="col-lg-4 col-sm-6">
+             <div class="feature-box">
+                <i class="mdi mdi-truck-fast"></i>
+                <h6>Free & Next Day Delivery</h6>
+                <p>Lorem ipsum dolor sit amet, cons...</p>
+             </div>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+             <div class="feature-box">
+                <i class="mdi mdi-basket"></i>
+                <h6>100% Satisfaction Guarantee</h6>
+                <p>Rorem Ipsum Dolor sit amet, cons...</p>
+             </div>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+             <div class="feature-box">
+                <i class="mdi mdi-tag-heart"></i>
+                <h6>Great Daily Deals Discount</h6>
+                <p>Sorem Ipsum Dolor sit amet, Cons...</p>
+             </div>
+          </div>
+       </div>
+    </div>
+ </section>

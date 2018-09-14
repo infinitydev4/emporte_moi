@@ -69,10 +69,13 @@
   background-color: #609cec;
 }
 .a-bg-orange {
-  background-color: #d35400;
+  background-color: rgb(233, 97, 37);
 }
 .a-bg-yellow {
   background-color: #fcd419;
+}
+.a-bg-jaune {
+  background-color: #f6e58d;
 }
 .a-bg-violet {
   background-color: #cb79e6;

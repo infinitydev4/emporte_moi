@@ -334,10 +334,11 @@ DEPENDENCIES
   devise
   dotenv-rails
   faker
-  haml
-  haml-rails (~> 1.0)
+  font-awesome-rails
   geocoder
   gmaps4rails
+  haml
+  haml-rails (~> 1.0)
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)

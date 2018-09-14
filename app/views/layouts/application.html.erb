@@ -7,13 +7,16 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
 
   <body>
     <%= render "layouts/modal"%>
     <%= render "layouts/header"%>
+    
     <%= yield %>
     <%= render "layouts/cart"%>
+    <%= render "layouts/contacts"%>
     <%= render "layouts/footer"%>
   </body>
 </html>

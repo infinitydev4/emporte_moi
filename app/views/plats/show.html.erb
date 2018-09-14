@@ -26,7 +26,7 @@
            <div class="short-description">
               <h5>
                  Description
-                 <p class="float-right">Disponibilité: <span class="badge badge-success">
+                 <p class="float-right">Disponibilité : <span class="badge badge-success">
                   <% if @plat.stock > 0 %>
                    En stock ( <%= @plat.stock %> )
                   <% else %>
@@ -35,7 +35,18 @@
                  </span></p>
               </h5>
               <p><%= @plat.description %></p>
-              </p>
+           </div>
+           <div class="short-description">
+             Ce plat vous est proposé par :
+             <% if @plat.user_id %>
+                <%= link_to particulier_path(name:@user.nom) do %>
+                  <%= @user.prénom %> <%= @user.nom %> <%= image_tag @user.image_profile, style: "width:80px;border-radius: 50%;" %>
+                <%end%>
+             <% elsif @plat.restaurant_id %>
+             <%= link_to profil_resto_path(name: @resto.nom) do %>
+               <%= @resto.nom %> <%= image_tag @resto.image_resto, style: "width:80px;border-radius: 50%;" %>
+              <% end %>
+             <% end %>
            </div>
         </div>
      </div>
