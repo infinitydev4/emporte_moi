@@ -18,5 +18,3 @@ Rails.application.config.assets.precompile += %w( base.css )
 Rails.application.config.assets.precompile += %w( html5.shiv.js)
 Rails.application.config.assets.precompile += %w( respond.min.js )
 Rails.application.config.assets.precompile += %w( placeholder.js)
-
-

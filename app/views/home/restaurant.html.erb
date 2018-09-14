@@ -6,9 +6,10 @@
                <div class="col-md-12">
                   <div class="card card-body account-right">
                     <div class="user-profile-header">
-                      <%= image_tag @resto.image_resto %>
+                      <%= image_tag @resto.image_resto, class: "round" %>
                        <h5 class="mb-1 text-secondary"> <%= @resto.nom.capitalize %></h5>
                        <p> <%= show_num(@resto.téléphone) %></p>
+                       <p><%= @resto.adresse %></p>
                     </div>
                     <center>
                       <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?center='#{geoloc(@resto.adresse)[0]},#{geoloc(@resto.adresse)[1]}'&zoom=18&size=800x800&maptype=roadmap
@@ -18,30 +19,34 @@
                </div>
             </div>
          </div>
-         <div class="col-md-8 ">
+         <div class="card col-md-2">
+           <center><h5>Plats proposés par <%= @resto.nom %></h5></center>
+           <% @resto.plats.each do |plat| %>
+           <%= link_to plat_path(id: plat.id) do %>
+             <%= image_tag plat.photo_plat, style: "border-radius: 10%;" %>
+           <% end %>
+           <br>
+           <%end%>
+         </div>
+         <div class="col-md-6">
            <% if current_user %>
+             <center><h2>Laisser un commentaire à <%= @resto.nom %></h2></center>
              <%= render partial: 'comments/form' %>
            <% end %>
            <% @resto.comments.each do |c|%>
+           <br>
              <div class="container">
               <div class="row" style="width:100%">
                 <div class="a-5" style="width:80%">
                   <div class="a-5-m a-bg-orange">
-                    <%=c.titre%> <hr>
-                     <%= c.body%><br>
+                     <%= c.body %>
                   </div>
-                  <% if c.user %>
-                    <h4><%=c.user.prénom%> <%=c.user.nom%> <%= image_tag c.user.image_profile, style: "width:50px" %> <span></span></h4>
-                  <% else %>
-                    <h4><%=c.restaurant.nom%> <%= image_tag c.restaurant.image_resto, style: "width:50px" %> <span></span></h4>
-                  <% end %>
-             </div>
-             </div>
+                  <h4><%=User.find(c.auteur_id).prénom%> <%=User.find(c.auteur_id).nom%> <%= image_tag User.find(c.auteur_id).image_profile,class: "round", style: "width:50px;" %> <span></span></h4>
+                 </div>
+              </div>
              </div>
            <%end%>
-
          </div>
-
       </div>
    </div>
 </section>
