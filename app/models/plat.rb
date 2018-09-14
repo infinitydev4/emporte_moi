@@ -8,6 +8,6 @@ class Plat < ApplicationRecord
     has_and_belongs_to_many :orders
 
     def self.search(titre)
-        where("titre like ?", "%#{titre}%")
+        where("Lower(titre) like ?", "%#{titre}%")
       end
 end
