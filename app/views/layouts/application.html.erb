@@ -7,6 +7,16 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= analytics_init if GoogleAnalytics.valid_tracker? %>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-125787614-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-125787614-1');
+    </script>
 
   </head>
 
@@ -14,8 +24,8 @@
     <%= render "layouts/modal"%>
     <%= render "layouts/header"%>
     <%= yield %>
-    <%= render "layouts/cart"%>
     <%= render "layouts/contacts"%>
+    <%= render "layouts/cart"%>
     <%= render "layouts/footer"%>
   </body>
 </html>

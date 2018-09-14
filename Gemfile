@@ -75,3 +75,4 @@ gem "haml-rails", "~> 1.0"
 gem 'geocoder'
 gem 'gmaps4rails'
 gem "font-awesome-rails"
+gem 'google-analytics-rails', '1.1.1'
