@@ -7,11 +7,22 @@ div.search{
 }
 .search{
     padding-top: 10px;
+    width: 30%;
 }
 .profil {
   width: 100% !important;
 }
-
+input#titre.input-search{
+  width: 300px;
+  height: 45px; 
+}
 .logo-nav {
   width: 100px;
 }
+
+div.logo-profile{				
+    float:left;
+    width: 100px;
+
+    }
+  
