@@ -2,20 +2,14 @@
 <%= form_for(:comment, html: {method: :post, action: "create"}) do |form| %>
 
     <div class="form-group">
-      <%= form.label :titre, class: "control-label" %><br />
-      <%= form.text_field :titre, class: "form-control" %>
-    </div>
-
-        <div class="form-group">
-      <%= form.label "texte", class: "control-label" %><br />
       <%= form.text_area :body, class: "form-control" %>
     </div>
 
 
      <div class="actions">
-      <%= form.submit "Créer un commentaire", class:"btn btn-md btn-secondary" %>
+      <%= form.submit "Créer un commentaire", class:"a-93 a-btn a-btn-orange" %>
     </div>
 
     <%end%>
-    
+
     </center>

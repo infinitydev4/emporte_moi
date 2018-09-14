@@ -24,7 +24,7 @@ class OrderController < ApplicationController
 
     charge= Stripe::Charge.create(
         customer: @customer.id,
-        amount:somme,
+        amount:@somme,
         description: "Payement photo de ",
         currency: 'eur',
         receipt_email:params[:stripeEmail]
