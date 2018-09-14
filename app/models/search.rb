@@ -10,7 +10,7 @@ class Search < ApplicationRecord
         dish=plats.where(["prix >= ?",min_prix]) if min_prix.present?
         dish=plats.where(["prix >= ?",max_prix]) if max_prix.present?
         dish=resto.where("nom LIKE ?","%#{nom}%").plats if nom.present?
-        dish=user.where("nom LIKE ?","%#{prénom}%").plats if nom.present?
+        dish=user.where("nom LIKE ?","%#{prénom}%").plats if prénom.present?
 
         return dish
     end
