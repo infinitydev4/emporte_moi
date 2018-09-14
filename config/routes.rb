@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'search/create'
   get 'search/show'
   resources :plats
-  resources :searches 
+  resources :searches
   devise_for :restaurants
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root to: 'home#index'
