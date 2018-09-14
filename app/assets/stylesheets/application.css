@@ -14,7 +14,7 @@
  *= require_tree .
  *= require_self
  */
-@import "font-awesome.min.css";
+@import "fontawesome.min.css";
 @import "bootstrap/css/bootstrap.min.css";
 @import "datatables/datatables.css";
 @import "owl-carousel/owl.carousel.css";

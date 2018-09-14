@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(version: 2018_09_13_184321) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "restaurant_id"
+    t.index ["restaurant_id"], name: "index_comments_on_restaurant_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -107,6 +109,13 @@ ActiveRecord::Schema.define(version: 2018_09_13_184321) do
     t.bigint "restaurant_id"
     t.index ["restaurant_id"], name: "index_plats_on_restaurant_id"
     t.index ["user_id"], name: "index_plats_on_user_id"
+  end
+
+  create_table "plats_categories", id: false, force: :cascade do |t|
+    t.bigint "plat_id"
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_plats_categories_on_category_id"
+    t.index ["plat_id"], name: "index_plats_categories_on_plat_id"
   end
 
   create_table "restaurants", force: :cascade do |t|

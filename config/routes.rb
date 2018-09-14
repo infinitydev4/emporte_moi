@@ -35,9 +35,8 @@ Rails.application.routes.draw do
   post '/plats/new', to: 'plats#create'
   get '/particulier/:name', to: 'home#particulier', as: 'particulier'
   post '/particulier/:name', to: 'comments#create'
-  resources :users do
-    resources :comments
-  end
 
-  get '/restaurant/:name', to: 'home#restaurant', as: 'profil_resto'
+
+  get '/restaurant/:name', to: 'home#restaurant', as: 'restaurant'
+  post '/restaurant/:name', to: 'comments#create_resto'
 end

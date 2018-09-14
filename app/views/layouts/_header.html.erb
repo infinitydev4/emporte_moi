@@ -3,17 +3,20 @@
      <%= link_to root_url do %>
        <%= image_tag 'Emporte-moi.png', class: "logo-nav"%>
      <% end %>
-         <div class="my-2 my-lg-0">
-            <ul class="list-inline main-nav-right">
+         <div class="search">
                 <li class="list-inline-item ">
                     <%= form_tag(research_path, :method => "get") do %>
                     <%= text_field_tag :titre, params[:titre], placeholder: "Chercher un plat" %>
-                    <%= submit_tag "Search", :name => nil %>
+                    <%= submit_tag "Search", :name => nil, class:"a-103 a-btn a-btn-orange"  %>
+
+                    <%= link_to search_new_path, class:"a-btn a-btn-icon a-btn-black" do %><i class="mdi mdi-settings"></i>
                   <% end %>
-                  <%= link_to "Advanced research", new_search_path %>
-               
+                  <%end%>
                  </li>
-              <li class="list-inline-item ">
+                 </div>
+         <div class="my-2 my-lg-0">
+            <ul class="list-inline main-nav-right">
+              <li class="list-inline-item">
                 <% if current_user %>
                   <a><%= link_to "Proposer un plat", new_plat_path, class: "a-93 a-btn a-btn-orange" %></a>
                 <% elsif current_restaurant %>
@@ -81,3 +84,4 @@
          </div>
    </div>
 </nav>
+

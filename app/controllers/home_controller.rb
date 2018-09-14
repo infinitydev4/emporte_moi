@@ -42,7 +42,7 @@ class HomeController < ApplicationController
     @user = User.find_by(nom:params[:name])
   end
   def restaurant
-    @resto = Restaurant.find_by(nom: "Resto-Test")
+    @resto = Restaurant.find_by(nom: params[:name])
     @apikey = ENV['API_KEY']
   end
 end
