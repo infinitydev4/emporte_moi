@@ -9,6 +9,7 @@ require 'faker'
 
 PaniersPlat.destroy_all
 Plat.destroy_all
+Order.destroy_all
 Search.destroy_all
 Category.destroy_all
 Comment.destroy_all

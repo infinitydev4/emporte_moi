@@ -3,12 +3,12 @@ class OrderController < ApplicationController
     @panier = current_user.panier
     @somme = @panier.plats.map{|plat| plat.prix*(@panier.paniers_plats.find_by(plat_id: plat.id).quantité)}.sum
 
-     if current_user.panier.order
-    @order = current_user.panier.order
+  if Order.find_by(user_id: current_user.id, paid: false)
+    @order = Order.find_by(user_id: current_user.id, paid: false)
   else
     @order = Order.create(panier_id: current_user.panier.id, user_id: current_user.id)
     current_user.panier.plats.each do |plat|
-      OrdersPlat.create(order_id: @order.id, plat_id: plat.id)
+      OrdersPlat.create(order_id: @order.id, plat_id: plat.id, quantité: PaniersPlat.find_by(panier_id: @panier.id, plat_id: plat.id).quantité)
     end
   end
 
@@ -18,6 +18,7 @@ class OrderController < ApplicationController
     @user = current_user
     @panier = current_user.panier
     @somme = @panier.plats.map{|plat| plat.prix*(@panier.paniers_plats.find_by(plat_id: plat.id).quantité)}.sum
+    @order = @user.orders.find_by(paid: false)
     @customer = Stripe::Customer.create(
         email:params[:stripeEmail],
         source:params[:stripeToken]
@@ -31,8 +32,8 @@ class OrderController < ApplicationController
         receipt_email:params[:stripeEmail]
     )
 
-    @body = @user.orders.first.plats.map{ |plat|
-      "<tr><td>#{plat.titre}</td><td>#{plat.prix}</td><td>#{@panier.paniers_plats.first.quantité}</td><td>#{(plat.prix)*(1)}</td></tr>"}
+    @body = @order.plats.map{ |plat|
+      "<tr><td>#{plat.titre}</td><td>#{plat.prix}</td><td>#{@panier.paniers_plats.first.quantité}</td><td>#{(plat.prix)*(1)}</td></tr>"}.to_s
 
 
 
@@ -62,7 +63,7 @@ class OrderController < ApplicationController
 
             <div class='line'>
               <div class='left'>
-                Numéro de commande : <strong>#{@user.orders.first.id}</strong>
+                Numéro de commande : <strong>#{@order.id}</strong>
               </div>
 
               <div class='right'>
@@ -77,7 +78,7 @@ class OrderController < ApplicationController
           <table class='s-table c2'>
             <tbody>
               <tr>
-                <th>Nom du Produit</th>
+                <th>Nom du Plat</th>
 
                 <th>Prix</th>
 
@@ -91,14 +92,14 @@ class OrderController < ApplicationController
 
                 <td> TOTAL</td>
 
-        <td><strong>#{@user.orders.first.plats.map{|plat| plat.prix*(@panier.paniers_plats.first.quantité)}.sum} € </strong></td>
+        <td><strong>#{@order.plats.map{|plat| plat.prix*(@panier.paniers_plats.first.quantité)}.sum} € </strong></td>
               </tr>
             </tbody>
           </table>
         </div>
 
         <div class='bottom s-box no-border normal-text small'>
-          N'ésitez pas à nous écrire si vous avez la moindre
+          N'hésitez pas à nous écrire si vous avez la moindre
           question.<br />
           <br />
           Salutations !<br />
@@ -110,6 +111,8 @@ class OrderController < ApplicationController
     @panier.plats.each do |plat|
       @panier.paniers_plats.destroy_all
     end
+
+    @order.update(paid: true)
 
     redirect_to root_path
   rescue Stripe::CardError => e

@@ -4,6 +4,7 @@ class Plat < ApplicationRecord
     has_and_belongs_to_many :paniers
     has_and_belongs_to_many :categories
     has_many :paniers_plats
+    has_many :orders_plats
     has_one_attached :photo_plat
     has_and_belongs_to_many :orders
 
