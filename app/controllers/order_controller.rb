@@ -25,15 +25,15 @@ class OrderController < ApplicationController
 
     charge= Stripe::Charge.create(
         customer: @customer.id,
-        amount:@somme,
+        amount:@somme.to_i*100,
         description: "Payement photo de ",
         currency: 'eur',
         receipt_email:params[:stripeEmail]
     )
 
+    @body = @user.orders.first.plats.map{ |plat|
+      "<tr><td>#{plat.titre}</td><td><#{plat.prix}></td><td>#{@panier.paniers_plats.first.quantité}</td><td>#{(plat.prix)*(1)}</td></tr>"}
 
-    rescue Stripe::CardError => e
-    flash[:alert]=e.message
 
 
     email = { messages: [{
@@ -84,24 +84,14 @@ class OrderController < ApplicationController
                 <th width='15%'>Qté</th>
 
                 <th width='15%'>Total</th>
-              </tr>"+
-              @user.orders.first.plats.each do |plat|
-                "<tr>
-                  <td>#{plat.titre}</td>
-
-                  <td><#{plat.prix}></td>
-
-                  <td>#{PaniersPlats.find_by(plat_id:plat.id).quantité}</td>
-
-                  <td>#{(plat.prix)*(PaniersPlats.find_by(plat_id:plat.id).quantité)}</td>
-                </tr>"
-              end +
-              "<tr>
+              </tr>
+              #{@body}
+              <tr>
                 <td colspan='2'></td>
 
                 <td> TOTAL</td>
 
-        <td><strong>#{@user.orders.first.plats.map{|plat| plat.prix*(PaniersPlats.find_by(plat_id:plat.id).quantité)}.sum} € </strong></td>
+        <td><strong>#{@user.orders.first.plats.map{|plat| plat.prix*(@panier.paniers_plats.first.quantité)}.sum} € </strong></td>
               </tr>
             </tbody>
           </table>
@@ -118,10 +108,13 @@ class OrderController < ApplicationController
     }]}
     test = Mailjet::Send.create(email)
     @panier.plats.each do |plat|
-      PaniersPlat.destroy(PaniersPlat.find_by(panier_id: @panier.id, plat_id: plat.id).id)
+      @panier.paniers_plats.destroy_all
     end
 
-    redirect_to root_url
+    redirect_to root_path
+  rescue Stripe::CardError => e
+  flash[:alert]=e.message
+
   end
 
 
