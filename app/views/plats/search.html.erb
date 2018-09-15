@@ -1,9 +1,9 @@
 
 
- 
+
  <section class="shop-list section-padding">
     <div class="container">
-       <div class="row">
+       <!-- <div class="row">
           <div class="col-md-3">
             <div class="btn-group float-right mt-2">
                 <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -18,17 +18,16 @@
                 </div>
              </div>
                  </div>
-              </div>
-            
+              </div> -->
+
            </div>
-          <div class="col-md-9">
-               
-                <h5 class="mb-3">Reseach</h5>
-             </div>
+          <div class="col-md-12 text-center">
+              <h2 class="mb-3">Voici les plats correspondant à votre recherche</h2>
+          </div>
              <div class="card-container">
                 <% @search.each do |search| %>
                 <div class="card" style="width: 222px">
-                    
+
                     <div class="item">
                        <div class="product">
                           <%= link_to plat_path(id: search.id) do %>
@@ -40,13 +39,13 @@
                                 <h6><strong> Disponibilité : </strong> <%= search.plage_horaire %></h6>
                              </div>
                              <div class="product-footer">
-                               
+
                                <p class="offer-price"><%= search.prix %>€</p>
                              </div>
                          <% end %>
                        </div>
                     </div>
-                  
+
                 </div>
                 <% end %>
        </div>

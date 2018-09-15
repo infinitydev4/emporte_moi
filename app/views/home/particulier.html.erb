@@ -30,7 +30,7 @@
          </div>
          <div class="col-md-6">
            <% if current_user %>
-             <center><h2>Laisser un commentaire à <%= @user.nom %></h2></center>
+             <center><h2>Laisser un commentaire à <%= @user.prénom %></h2></center>
              <%= render partial: 'comments/form' %>
            <% end %>
            <% @user.comments.each do |c|%>

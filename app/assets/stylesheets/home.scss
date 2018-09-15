@@ -1,6 +1,11 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.block-shearch{
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(to right, rgb(233, 97, 37), orange);
+}
 div.search{
     display: flex;
     justify-content: center;

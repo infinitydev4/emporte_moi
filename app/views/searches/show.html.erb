@@ -1,11 +1,11 @@
 <div class="col-md-9">
-               
-    <h5 class="mb-3">Reseach</h5>
+
+    <h5 class="mb-3">Voici les plats correspondant à votre recherche</h5>
  </div>
  <div class="card-container" style="heigth:500px">
     <% @search.search_plats.each do |search| %>
     <div class="card" style="width: 222px">
-        
+
         <div class="item">
            <div class="product">
               <%= link_to plat_path(id: search.id) do %>
@@ -17,13 +17,13 @@
                     <h6><strong> Disponibilité : </strong> <%= search.plage_horaire %></h6>
                  </div>
                  <div class="product-footer">
-                   
+
                    <p class="offer-price"><%= search.prix %>€</p>
                  </div>
              <% end %>
            </div>
         </div>
-      
+
     </div>
     <% end %>
 </div>
