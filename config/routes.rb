@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get '/commande', to: "order#new", as: "order"
   post '/commande', to: "order#create"
-  get '/reseach', to: "plats#search", as: "research"
+  get '/recherche', to: "plats#search", as: "research"
   devise_for :users, :controllers => {:registrations => "users/registrations"}
 
   get '/paniers', to: 'paniers#show', as: "paniers"
