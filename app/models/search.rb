@@ -10,9 +10,12 @@ class Search < ApplicationRecord
         dish=plats.where(["prix >= ?",min_prix]) if min_prix.present?
         dish=plats.where(["prix <= ?",max_prix]) if max_prix.present?
         dish=plats.joins(:user).where("nom LIKE ?","%#{prénom}%") if prénom.present?
-        dish=plats.join(:restaurant).where("nom LIKE ?","%#{nom}%")[0] if nom.present?
+        dish=plats.join(:restaurant).where("nom LIKE ?","%#{nom}%") if nom.present?
         
-
-        return dish
+        if dish===nil
+        dish=plats
+        else
+        return dish=dish 
+        end
     end
 end
