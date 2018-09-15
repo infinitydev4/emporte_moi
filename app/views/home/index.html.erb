@@ -16,7 +16,7 @@
               <div class="product">
                  <%= link_to plat_path(id: plat.id) do %>
                     <div class="product-header">
-                       <%= image_tag plat.photo_plat.variant(resize: '200x200').processed %>
+                       <%= image_tag plat.photo_plat.variant(resize: '400x200').processed, style: "object-fit:cover" %>
                     </div>
                     <div class="product-body">
                        <h5><%= plat.titre %></h5>
