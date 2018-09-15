@@ -31,8 +31,35 @@ class Users::RegistrationsController < Devise::RegistrationsController
             }
         ],
         'Subject'=> 'Bienvenue sur Emporte-moi !',
-        'TextPart'=> "Salut #{current_user.prénom.capitalize}. Merci de ton inscription sur le site ! Tu peux à présent commander autant de plats que tu veux !",
-        'HTMLPart'=> "<h1>Salut #{current_user.prénom.capitalize}</h1>. <h2>Merci de ton inscription sur le site ! Tu peux à présent commander autant de plats que tu veux !</h2>"
+        'HTMLPart'=> "<div class='title s-box no-border normal-text'>
+          Nous vous remercions de votre inscription !
+        </div>
+
+        <div class='content s-box no-border'>
+          <div class='normal-text small'>
+            Bonjour !<br />
+            <br />
+            Nous vous remercions de votre inscription sur <strong>Emporte Moi</strong>. <br />
+            Vous trouverez les d&eacute;tails de votre inscription ci-dessous.
+
+            <div class='line'>
+              <div class='left'>
+                Vos informations clients :<br />
+                nom : <strong>#{current_user.nom}</strong><br />
+                Prenom : <strong>#{current_user.prénom}</strong><br />
+                Email : <strong>#{current_user.email}</strong><br />
+                Telephone : <strong>#{current_user.téléphone}</strong><br />
+                      </div>
+
+
+            <div class='bottom s-box no-border normal-text small'>
+              Vérifiez ces informations. Vous pouvez les corriger sur votre espace membre si elles comportent des erreurs.<br />
+            N'hésitez pas &agrave; nous écrire si vous avez la moindre
+              question.<br />
+              <br />
+              Salutations !<br />
+              Du gros Love de la part de toute l'équipe <strong>Emporte Moi</strong>
+            </div>"
       }]}
       test = Mailjet::Send.create(email)
 
