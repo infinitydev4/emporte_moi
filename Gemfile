@@ -76,3 +76,4 @@ gem 'geocoder'
 gem 'gmaps4rails'
 gem "font-awesome-rails"
 gem 'google-analytics-rails', '1.1.1'
+gem 'google-api-client', '~> 0.11'
