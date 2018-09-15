@@ -10,7 +10,7 @@
            <div class="product">
               <%= link_to plat_path(id: search.id) do %>
                  <div class="product-header">
-                  <%= image_tag search.photo_plat, style: "object-fit:cover" %>
+                  <%= image_tag search.photo_plat.variant(resize: '200x200').processed %>
                  </div>
                  <div class="product-body">
                     <h5><%= search.titre %></h5>

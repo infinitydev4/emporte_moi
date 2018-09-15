@@ -3,7 +3,7 @@
      <div class="col-md-6">
         <div class="shop-detail-left">
            <div class="shop-detail-slider">
-          <%= image_tag @plat.photo_plat %>
+          <%= image_tag @plat.photo_plat.variant(resize: '450x300').processed %>
            </div>
         </div>
      </div>

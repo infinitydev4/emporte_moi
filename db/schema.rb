@@ -111,13 +111,6 @@ ActiveRecord::Schema.define(version: 2018_09_14_123612) do
     t.index ["user_id"], name: "index_plats_on_user_id"
   end
 
-  create_table "plats_categories", id: false, force: :cascade do |t|
-    t.bigint "plat_id"
-    t.bigint "category_id"
-    t.index ["category_id"], name: "index_plats_categories_on_category_id"
-    t.index ["plat_id"], name: "index_plats_categories_on_plat_id"
-  end
-
   create_table "restaurants", force: :cascade do |t|
     t.string "nom"
     t.string "adresse"
