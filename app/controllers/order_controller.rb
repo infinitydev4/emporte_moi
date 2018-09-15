@@ -32,7 +32,7 @@ class OrderController < ApplicationController
     )
 
     @body = @user.orders.first.plats.map{ |plat|
-      "<tr><td>#{plat.titre}</td><td><#{plat.prix}></td><td>#{@panier.paniers_plats.first.quantité}</td><td>#{(plat.prix)*(1)}</td></tr>"}
+      "<tr><td>#{plat.titre}</td><td>#{plat.prix}</td><td>#{@panier.paniers_plats.first.quantité}</td><td>#{(plat.prix)*(1)}</td></tr>"}
 
 
 
