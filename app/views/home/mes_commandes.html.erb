@@ -8,12 +8,14 @@
                      <div class="user-profile-header">
                         <h5 class="mb-1 text-secondary"> <%= @user.prénom %> <%= @user.nom %></h5>
                         <p> <%= show_num(@user.téléphone) %></p>
+                        <%= image_tag @user.image_profile %>
                      </div>
                      <div class="list-group">
                         <a href=<%= profil_path %> class="list-group-item list-group-item-action"><i aria-hidden="true" class="mdi mdi-account-outline"></i>  Mon Profil</a>
                         <a href=<%= mes_commandes_path %> class="list-group-item list-group-item-action active"><i aria-hidden="true" class="mdi mdi-format-list-bulleted"></i>  Mes commandes</a>
+                        <a href=<%= mes_plats_path %> class="list-group-item list-group-item-action"><i aria-hidden="true" class="mdi mdi-format-list-bulleted"></i>  Mes plats</a>
                         <%= link_to(destroy_user_session_path, class: "list-group-item list-group-item-action", method: :delete) do %>
-                          <i aria-hidden="true" class="mdi mdi-format-list-bulleted"></i>  Se déconnecter
+                          <i aria-hidden="true" class="mdi mdi-account-off"></i>  Se déconnecter
                         <% end %>
                       </div>
                   </div>
@@ -21,7 +23,19 @@
                <div class="col-md-8">
                   <div class="card card-body account-right">
                      <div class="widget">
-                       A venir
+                       <% @user.orders.where(paid: true).each do |order| %>
+                       <div class="card card-body">
+                          <h4>Commande numéro : <%= order.id %></h4>
+                          <div class="row">
+                            <% order.plats.each do |plat| %>
+                            <div class="col-sm-6">
+                                <%= plat.titre  %> x <%= OrdersPlat.find_by(order_id: order.id, plat_id: plat.id).quantité %>
+                                <%= image_tag plat.photo_plat, style: "width:150px; height: 150px; object-fit: cover;"%>
+                            </div>
+                            <% end %>
+                          </div>
+                        </div>
+                       <% end %>
                      </div>
                   </div>
                </div>

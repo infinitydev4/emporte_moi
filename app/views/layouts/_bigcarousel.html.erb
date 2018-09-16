@@ -1,9 +1,9 @@
-<section class="carousel-slider-main text-center border-top border-bottom bg-white" style="top:20px;">
+<section class="carousel-slider-main text-center" >
    <div class="owl-carousel owl-carousel-slider">
      <% Plat.all.each do |plat| %>
       <div class="item">
        <%= link_to plat_path(id: plat.id) do %>
-        <%= image_tag plat.photo_plat, style: "width:800px; height:500px;object-fit:cover;" %>
+        <%= image_tag plat.photo_plat, style: "width:1800px; height:600px;object-fit:fill;" %>
        <% end %>
       </div>
      <% end %>

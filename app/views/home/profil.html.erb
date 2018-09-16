@@ -13,6 +13,7 @@
                      <div class="list-group">
                         <a href=<%= profil_path %> class="list-group-item list-group-item-action active"><i aria-hidden="true" class="mdi mdi-account-outline"></i>  Mon Profil</a>
                         <a href=<%= mes_commandes_path %> class="list-group-item list-group-item-action"><i aria-hidden="true" class="mdi mdi-format-list-bulleted"></i>  Mes commandes</a>
+                        <a href=<%= mes_plats_path %> class="list-group-item list-group-item-action"><i aria-hidden="true" class="mdi mdi-format-list-bulleted"></i>  Mes plats</a>
                         <%= link_to(destroy_user_session_path, class: "list-group-item list-group-item-action", method: :delete) do %>
                           <i aria-hidden="true" class="mdi mdi-account-off"></i>  Se déconnecter
                         <% end %>

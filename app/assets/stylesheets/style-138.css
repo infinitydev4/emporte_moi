@@ -10,7 +10,6 @@ body {
 	line-height: 23px;
 	background: #fff;
 	font-family: 'Open Sans', sans-serif;
-	border-top:2px solid #f8a841;
 	-webkit-font-smoothing: antialiased;
 }
 h1,
@@ -556,7 +555,7 @@ hr {
 }
 .ui-138 .social{
 	margin-top:10px;
-}	
+}
 .ui-138 .social a{
 	display:inline-block;
 	width:50px;

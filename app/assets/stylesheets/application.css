@@ -66,3 +66,11 @@
 .round {
   border-radius: 50%;
 }
+
+.navbar {
+  border-bottom:5px solid #f8a841;
+}
+
+.carousel-slider-main {
+  box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.8);
+}

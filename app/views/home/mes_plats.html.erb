@@ -6,17 +6,30 @@
                <div class="col-md-4">
                   <div class="card account-left">
                      <div class="user-profile-header">
-                        <h5 class="mb-1 text-secondary"><%= @resto.nom.capitalize %></h5>
-                        <p> <%= show_num(@resto.téléphone) %></p>
+                       <% if current_user %>
+                         <h5 class="mb-1 text-secondary"><%= @user.prénom.capitalize %> <%= @user.nom.capitalize %></h5>
+                         <p> <%= show_num(@user.téléphone) %></p>
+                         <%= image_tag @user.image_profile %>
+                       <% elsif current_restaurant %>
+                          <h5 class="mb-1 text-secondary"><%= @resto.nom.capitalize %></h5>
+                          <p> <%= show_num(@resto.téléphone) %></p>
+                          <%= image_tag @resto.image_resto %>
+                        <% end %>
                      </div>
                      <div class="list-group">
+                        <% if current_user %>
+                        <a href=<%= profil_path %> class="list-group-item list-group-item-action"><i aria-hidden="true" class="mdi mdi-account-outline"></i>  Mon profil</a>
+                        <a href=<%= mes_commandes_path %> class="list-group-item list-group-item-action"><i aria-hidden="true" class="mdi mdi-account-outline"></i>  Mes commandes</a>
+                        <a href=<%= mes_plats_path %> class="list-group-item list-group-item-action active"><i aria-hidden="true" class="mdi mdi-format-list-bulleted"></i>  Mes Plats</a>
+                          <%= link_to(destroy_user_session_path, class: "list-group-item list-group-item-action", method: :delete) do %>
+                            <i aria-hidden="true" class="mdi mdi-format-list-bulleted"></i>  Se déconnecter
+                          <% end %>
+                        <% elsif current_restaurant %>
                         <a href=<%= mon_restaurant_path %> class="list-group-item list-group-item-action"><i aria-hidden="true" class="mdi mdi-account-outline"></i>  Mon Restaurant</a>
                         <a href=<%= mes_plats_path %> class="list-group-item list-group-item-action active"><i aria-hidden="true" class="mdi mdi-format-list-bulleted"></i>  Mes Plats</a>
-                        <%= link_to(destroy_restaurant_session_path, class: "list-group-item list-group-item-action", method: :delete) do %>
-                          <i aria-hidden="true" class="mdi mdi-format-list-bulleted"></i>  Se déconnecter
-                        <% end %>
-                        <%= link_to registration_path(:restaurant), data: { confirm: "Are you sure?" }, method: :delete, class: "list-group-item list-group-item-action bg-danger text-white" do %>
-                          <i aria-hidden="true" class="mdi mdi-alert-circle"></i>  Détruire mon compte
+                          <%= link_to(destroy_restaurant_session_path, class: "list-group-item list-group-item-action", method: :delete) do %>
+                            <i aria-hidden="true" class="mdi mdi-format-list-bulleted"></i>  Se déconnecter
+                          <% end %>
                         <% end %>
                       </div>
                   </div>
@@ -24,7 +37,25 @@
                <div class="col-md-8">
                   <div class="card card-body account-right">
                      <div class="widget">
-                       A venir
+                       <% if current_user %>
+                         <div class="row">
+                           <% current_user.plats.each do |plat| %>
+                             <%= link_to plat_path(id: plat.id), class:"col-md-6" do %>
+                                 <h4 style="color:grey"><%= plat.titre %></h4>
+                                 <%= image_tag plat.photo_plat, style: "width:200px;height:200px;object-fit:cover;margin-bottom:20px;"%>
+                             <% end %>
+                          <% end %>
+                        </div>
+                       <% elsif current_restaurant %>
+                         <div class="row">
+                           <% current_restaurant.plats.each do |plat| %>
+                             <%= link_to plat_path(id: plat.id), class:"col-md-6" do %>
+                                 <h4 style="color:grey"><%= plat.titre %></h4>
+                                 <%= image_tag plat.photo_plat, style: "width:200px;height:200px;object-fit:cover;margin-bottom:20px;"%>
+                             <% end %>
+                           <% end %>
+                          </div>
+                       <% end %>
                      </div>
                   </div>
                </div>
