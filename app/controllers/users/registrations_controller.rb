@@ -78,9 +78,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # DELETE /resource
   def destroy
-    Order.destroy(current_user.order.id)
+    Order.destroy(current_user.orders.pluck(:id))
     Panier.destroy(current_user.panier.id)
-    Plat.destroy(current_user.plats)
+    Plat.destroy(current_user.plats.pluck(:id))
     super
   end
 
