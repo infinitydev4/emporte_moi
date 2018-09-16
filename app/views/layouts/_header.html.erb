@@ -7,7 +7,7 @@
           <%= image_tag 'Emporte-moi.png', class: "logo-nav"%>
           <% end %>
           </li>
-                <li class="list-inline-item ">
+                <li class="list-inline-item " id="bar-search">
                     <%= form_tag(research_path, :method => "get") do %>
                     <%= text_field_tag :titre, params[:titre], placeholder: "Chercher un plat", class:"input-search" %>
                     <%= submit_tag "Rechercher", :name => nil, class:"a-103 a-btn a-btn-orange"  %>
