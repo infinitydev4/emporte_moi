@@ -12,10 +12,12 @@ class Restaurant::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    current_restaurant.image_resto.attach(
-      io: File.open("app/assets/images/avatar.png"),
-      filename: "avatar-resto.png"
-    )
+    if current_restaurant
+      current_restaurant.image_resto.attach(
+        io: File.open("app/assets/images/avatar.png"),
+        filename: "avatar-resto.png"
+      )
+    end
   end
 
   # GET /resource/edit

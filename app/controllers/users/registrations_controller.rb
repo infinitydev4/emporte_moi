@@ -14,10 +14,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    current_user.image_profile.attach(
-      io: File.open("app/assets/images/avatar.jpg"),
-      filename: "avatar.jpg"
-    )
+    if current_user
+      current_user.image_profile.attach(
+        io: File.open("app/assets/images/avatar.jpg"),
+        filename: "avatar.jpg"
+      )
+    end
     if current_user
       email = { messages: [{
         'From'=> {
