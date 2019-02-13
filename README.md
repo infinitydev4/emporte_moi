@@ -20,13 +20,13 @@ Notre dream-team de Nantes est composée de:
   * **Bertyn**
     * 19 ans / 
   * **Florian**
-    * 19 ans / 
+    * 23 ans / 
   * **Lionel**
-    * 19 ans / 
+    * 35 ans / 
   * **Mohamed**
-    * 19 ans / 
+    * 26 ans / 
   * **Nicolas**
-    * 19 ans / 
+    * 21 ans / 
 
 
 > Dédicace au Lieu Unique, à la Fac de Sciences et à nos ordis à bout de souffle, sans qui tout celà n'aurait pas été possible.
@@ -46,22 +46,7 @@ Notre dream-team de Nantes est composée de:
  - [9] Du Google Analytics
  - [10] Du Google Maps
  - [11] Du Bootstrap
- - [12] Du 
- - [13] Du 
- - [..] Quelques tests : regarde Capybara pour les tests d'intégrations
- - ...
  
-```mermaid
-sequenceDiagram
-Alice ->> Bob: Hello Bob, how are you?
-Bob-->>John: How about you John?
-Bob--x Alice: I am good thanks!
-Bob-x John: I am good thanks!
-Note right of John: Bob thinks a long<br/>long time, so long<br/>that the text does<br/>not fit on a row.
-
-Bob-->Alice: Checking with John...
-Alice->John: Yes... John, how are you?
-```
 ### Méthodologie et répartition
 
 | Membre | Poste  | Partie  | Taf  |
@@ -95,11 +80,15 @@ rails '5.2.1'
 
 # Lancement :
 ```sh
-$ git clone https://
+$ git clone https://github.com/infinitydev4/emporte_moi/
 $ bundle install
 $ rails db:create
 $ rails db:migrate
 $ rails db:seed
 ```
+Pour les tests, le compte suivant est administrateur et peut donc accéder à la page /admin :
+- email : test@example.com
+- mot de passe : foobar
+
 
 ![Nantes](https://www.nantestech.com/kit_communication/LOGOS/PNG/NANTES-TECH-LOGO-HOR.png)
