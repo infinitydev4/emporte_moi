@@ -1,27 +1,36 @@
 <center>
-  <h5 class="heading-design-h5">Connectez-vous (restaurants)</h5>
-  <%= form_for("restaurant", url: session_path("restaurant"), html: {id: "sign"}) do |f| %>
-    <div class="form-group">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, placeholder: "email", class: "form-control", id: "email" %>
-    </div>
+<div class="container">
+  <div class="row" style="justify-content: center;">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+      
+      <div class="form-login">
+      <h5 class="heading-design-h5">Connectez-vous (restaurants)</h5>
+      <%= form_for("restaurant", url: session_path("restaurant"), html: {id: "sign"}) do |f| %>
+        <div class="form-group">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, placeholder: "email", class: "form-control", id: "email" %>
+        </div>
 
-    <div class="form-group">
-      <%= f.label :password %><br />
-      <%= f.password_field :password, placeholder: "******", class: "form-control", id: "passw" %>
-    </div>
+        <div class="form-group">
+          <%= f.label :password %><br />
+          <%= f.password_field :password, placeholder: "******", class: "form-control", id: "passw" %>
+        </div>
 
-    <% if devise_mapping.rememberable? -%>
-      <div class="form-group">
-        <%= f.check_box :remember_me , id: "rem"%>
-        <%= f.label :remember_me %>
+        <% if devise_mapping.rememberable? -%>
+          <div class="form-group">
+            <%= f.check_box :remember_me , id: "rem"%>
+            <%= f.label :remember_me %>
+          </div>
+        <% end -%>
+
+        <div class="actions">
+          <%= f.submit "Se connecter", class: "btn btn-lg btn-secondary" %>
+        </div>
+      <% end %>
+      <%= link_to "M'inscrire", new_restaurant_registration_path , class: "btn btn-primary" %>
+      <%= link_to "Je suis un particulier", new_user_session_path , class: "btn btn-primary" %>
       </div>
-    <% end -%>
-
-    <div class="actions">
-      <%= f.submit "Se connecter", class: "btn btn-lg btn-secondary" %>
-    </div>
-  <% end %>
-  <%= link_to "M'inscrire", new_restaurant_registration_path , class: "btn btn-primary" %>
-  <%= link_to "Je suis un particulier", new_user_session_path , class: "btn btn-primary" %>
-</center>
+      </div>
+  </div>
+</div>
+    </center>
