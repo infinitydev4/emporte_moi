@@ -1,16 +1,16 @@
 class SearchesController < ApplicationController
     def new
-        @search=Search.new
+        @search = Search.new
         @categories= Category.pluck(:name)
       end
     
       def create
-        @search= Search.create(search_params)
+        @search = Search.create(search_params)
         redirect_to @search
       end
     
       def show
-        @search= Search.find(params[:id])
+        @search = Search.find(params[:id])
       end
     
     private
