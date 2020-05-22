@@ -10,10 +10,9 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //= require jquery3
-//= require jquery.min
+//= require popper
+//= require bootstrap-sprockets
 //= require groci/js/jqBootstrapValidation
-//= require bootstrap/js/bootstrap.min
-//= require bootstrap/js/bootstrap.min
 //= require datatables/datatables
 //= require owl-carousel/owl.carousel
 //= require select2/js/select2.full
